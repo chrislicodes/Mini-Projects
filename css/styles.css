@@ -1,0 +1,15 @@
+/* Modify the background color */ 
+.navbar {
+    background-color: #0c6b94;
+  }
+
+ .navbar .navbar-nav .nav-link {
+    color: #ffffff;
+    border-radius: .25rem;
+    margin: 0 0.25em;
+ }
+
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  text-decoration: underline;
+}
