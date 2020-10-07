@@ -13,16 +13,46 @@
 
   <body>
 
-  <nav class="navbar navbar-expand navbar-custom">
-      <div class="nav navbar-nav">
-          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#">About</a>
-      </div>
+  <nav class="nav justify-content-end">
+    <a class = "nav-link" href="">Home</a>
+    <a class = "nav-link" href="">About</a>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Please login to access this button</a>
+
   </nav>
 
-    <h1>This is a headline</h1>
+    <h1>This is a heading <a href="#" class="badge badge-success smaller-badge">Success</a></h1>
 
+    <p>     
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Try me!
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        This is a hidden and collapsed Text! Support the artists. :> 
+      </div>
+    </div>
 
+    <div class="card-deck" style = "width: 60rem;">
+      <div class="card" style = "width: 18rem;">
+        <img src="https://cdnb.artstation.com/p/assets/images/images/019/159/125/large/ilya-kuvshinov-img-9742.jpg?1562260893" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Cyber Hunter's Zero fan art</h5>
+          <p class="card-text">This is a test!</p>
+          <p class="card-text"><small class="text-muted">By amazing <a href = "https://www.artstation.com/artwork/xzKKmO">Ilya Kushinov</a></small></p>
+        </div>
+      </div> 
+      <div class="card" style = "width: 18rem;">
+        <img src="https://cdna.artstation.com/p/assets/images/images/004/510/072/large/z-w-gu-sdas.jpg?1484185404" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Demon</h5>
+          <p class="card-text">This is a test!</p>
+          <p class="card-text"><small class="text-muted">By amazing <a href = "https://www.artstation.com/artwork/rB9ya">Z.W. Gu</a></small></p>
+        </div>
+      </div>        
+    <div>
+
+    
    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
