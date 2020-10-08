@@ -22,7 +22,7 @@
   color: white;
 }
 
-.nav > a:hover{
-  color:green;
-}
-
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: rgb(255, 255, 255);
+} 
