@@ -37,3 +37,8 @@ body {
 
 }
 
+@media only screen and (max-width: 767px) {
+  .card-img-top{
+    height:70vw;
+  }
+}
