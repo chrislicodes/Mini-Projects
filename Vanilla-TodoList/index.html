@@ -30,9 +30,155 @@
     <main class="todo-container">
         <div class="todo">
             <div class="todo__header">
-
+                <form class="input-form">
+                    <div class="input-text-container">
+                        <input type="text" class="input-text" placeholder="The next thing I have to do is .." required>
+                    </div>
+                    <div class="input-controls">
+                        <div class="input-time-info">
+                            <input type="date" max="2099-12-31" class="input-date" required>
+                            <input type="time" value="13:30" class="input-time" required>
+                            <select name="category" id="category" class="input-category">
+                                <option value="coding">Coding</option>
+                                <option value="finance">Finances</option>
+                                <option value="household">Household</option>
+                            </select>
+                        </div>
+                        <div class="input-btn-container">
+                            <button class="input-btn">Add Task :)</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="todo__main"></div>
+            <div class="todo__main">
+                <div class="tasks-container">
+                    <div class="task">
+                        <div class="task__icon-container">
+                            <div class="task__icon">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-pencil2"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="task__text-container">
+                            <p class="task__description">Write Chapter 3 of my book </p>
+                            <p class="task__date">01.02.2021 - 13:00</p>
+                        </div>
+                        <div class="task__btn-container">
+                            <button class="task__complete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button class="task__delete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="task__icon-container">
+                            <div class="task__icon">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-embed2"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="task__text-container">
+                            <p class="task__description">Fix Login Bug</p>
+                            <p class="task__date">02.02.2021 - 14:00</p>
+                        </div>
+                        <div class="task__btn-container">
+                            <button class="task__complete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button class="task__delete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="task__icon-container">
+                            <div class="task__icon">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-coin-euro"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="task__text-container">
+                            <p class="task__description">Check Spendings with Budget</p>
+                            <p class="task__date">04.02.2021 - 13:00</p>
+                        </div>
+                        <div class="task__btn-container">
+                            <button class="task__complete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button class="task__delete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="task__icon-container">
+                            <div class="task__icon">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-pencil2"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="task__text-container">
+                            <p class="task__description">Write Chapter 5 of my book </p>
+                            <p class="task__date">05.02.2021 - 13:00</p>
+                        </div>
+                        <div class="task__btn-container">
+                            <button class="task__complete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button class="task__delete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="task__icon-container">
+                            <div class="task__icon">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-pencil2"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="task__text-container">
+                            <p class="task__description">Review Chapter 3</p>
+                            <p class="task__date">05.02.2021 - 11:00</p>
+                        </div>
+                        <div class="task__btn-container">
+                            <button class="task__complete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button class="task__delete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="todo__footer"></div>
         </div>
     </main>

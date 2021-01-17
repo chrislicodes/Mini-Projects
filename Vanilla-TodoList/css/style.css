@@ -2,8 +2,23 @@
 --------- Basic Setup
 ------------------------------------------------- */
 :root {
-  --color-primary: #3a6186;
-  --color-secondary: #89253e;
+  --color-primary: rgba(233, 32, 82, 0.9);
+  --color-primary-hover: rgba(233, 32, 82, 0.6);
+
+  --color-white: #fafafa;
+  --color-grey: #f3f3f3;
+  --color-grey-dark: #a5a5a5;
+
+  --category-color: #154cb3;
+
+  --linear-gradient-color-1: #91eae4;
+  --linear-gradient-color-2: #86a8e7;
+  --linear-gradient-color-3: #7f7fd5;
+
+  --linear-gradient-color-4: rgba(255, 0, 0, 0.9);
+  --linear-gradient-color-5: rgba(219, 0, 219, 0.9);
+
+  --linear-gradient-color-6: rgba(32, 148, 243, 0.9);
 }
 
 * {
@@ -32,18 +47,18 @@ body {
 
   height: 100vh;
 
-  background: #7f7fd5; /* fallback for old browsers */
+  background: var(--linear-gradient-color-3); /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right bottom,
-    #91eae4,
-    #86a8e7,
-    #7f7fd5
+    var(--linear-gradient-color-1),
+    var(--linear-gradient-color-2),
+    var(--linear-gradient-color-3)
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right bottom,
-    #91eae4,
-    #86a8e7,
-    #7f7fd5
+    var(--linear-gradient-color-1),
+    var(--linear-gradient-color-2),
+    var(--linear-gradient-color-3)
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -54,7 +69,10 @@ body::before {
   left: 210px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(255, 0, 0, 0.9), rgba(219, 0, 219, 0.9));
+  background: linear-gradient(
+    var(--linear-gradient-color-4),
+    var(--linear-gradient-color-5)
+  );
   clip-path: circle(16rem at center);
 }
 
@@ -65,17 +83,19 @@ body::after {
   left: -220px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(32, 148, 243, 0.9), rgba(233, 32, 99, 0.9));
+  background: linear-gradient(
+    var(--linear-gradient-color-6),
+    var(--color-primary)
+  );
   clip-path: circle(14rem at center);
   z-index: -1;
   overflow: hidden;
 }
 
 /* ----------------------------------------------
---------- TODO - List
+--------- Heading
 ------------------------------------------------- */
 
-/* --------- Heading */
 .heading-container {
   width: 100%;
   height: 20%;
@@ -89,7 +109,7 @@ body::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: var(--color-white);
   text-transform: uppercase;
 }
 
@@ -100,7 +120,11 @@ body::after {
   font-size: 2rem;
 }
 
-/* --------- Heading */
+/* ----------------------------------------------
+--------- TODO - APP
+------------------------------------------------- */
+
+/* ----- General */
 .todo-container {
   display: flex;
   justify-content: center;
@@ -122,24 +146,234 @@ body::after {
   -webkit-backdrop-filter: blur(10px);
 
   border-radius: 4rem;
-  border: 7px solid #fff;
+  border: 7px solid var(--color-white);
   overflow: hidden;
 }
 
+/* ----- Layout */
 .todo__header {
   flex: 0 0 20%;
   border-radius: 2rem;
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--color-grey);
 }
 
 .todo__main {
-  flex: 0 0 70%;
+  flex: 1;
   width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .todo__footer {
   flex: 0 0 10%;
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--color-grey);
+}
+/* -------- HEADER */
+
+/* Input Form */
+
+.input-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 1rem;
+}
+
+.input-text-container {
+  display: flex;
+  flex: 1 1;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.input-controls {
+  display: flex;
+  flex: 1 1 85%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-btn-container {
+  flex: 1 1 10%;
+  padding-left: 1rem;
+}
+
+.input-time-info {
+  flex: 1 1 50%;
+}
+
+.input-time-info > * {
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-grey-dark);
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.input-time {
+  margin-left: 1rem;
+}
+
+.input-text {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  line-height: 1.6;
+  display: block;
+  width: 95%;
+  height: 4rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-grey-dark);
+  padding-left: 1rem;
+}
+
+.input-btn,
+.input-btn:active,
+.input-btn:focus,
+.input-btn:visited {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  font-weight: 700;
+  transition: all 0.1s;
+}
+
+.input-category {
+  margin-left: 1rem;
+  width: 10rem;
+}
+
+.input-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ------- TASK DESIGN */
+
+/* General */
+.tasks-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tasks-container:last-child {
+  margin-bottom: 1.5rem;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  height: 10rem;
+  width: 95%;
+  background-color: var(--color-white);
+  margin-top: 1.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(31, 38, 135, 0);
+  transition: border 0.25s;
+}
+
+.task:hover {
+  border: 2px solid var(--color-primary-hover);
+}
+
+/* Icon */
+.task__icon-container {
+  flex: 1 1 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7rem;
+  width: 7rem;
+  border: 1px solid var(--color-grey-dark);
+  border-radius: 100rem;
+}
+
+.task__icon > svg {
+  height: 4rem;
+  width: 4rem;
+  fill: var(--category-color);
+}
+
+/* Text */
+.task__text-container {
+  flex: 1 1 70%;
+  justify-content: space-between;
+}
+
+.task__text-container > p {
+  padding-left: 0.5rem;
+}
+
+.task__description {
+  margin-top: 2.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.task__date {
+  font-size: 1.5rem;
+}
+
+/* Button */
+.task__btn-container {
+  flex: 1 1 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task__btn-container > button {
+  display: inline-block;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 0.75rem;
+}
+
+.task__complete-btn > svg {
+  height: 2.25rem;
+  width: 2.25rem;
+  fill: rgb(25, 172, 32);
+}
+
+.task__delete-btn > svg {
+  height: 2rem;
+  width: 2rem;
+  fill: rgb(236, 63, 63);
+}
+
+/* Scrollbar */
+.todo__main::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: var(--color-white);
+}
+
+.todo__main::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 10px;
+  background-color: var(--color-white);
+}
+
+.todo__main::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-primary);
 }
