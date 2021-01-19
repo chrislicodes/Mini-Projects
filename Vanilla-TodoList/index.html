@@ -45,7 +45,7 @@
                             </select>
                         </div>
                         <div class="input-btn-container">
-                            <button class="input-btn">Add Task :)</button>
+                            <button class="input-btn btn">Add Task :)</button>
                         </div>
                     </div>
                 </form>
@@ -177,27 +177,76 @@
                             </button>
                         </div>
                     </div>
+                    <div class="task">
+                        <div class="task__icon-container">
+                            <div class="task__icon">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-pencil2"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="task__text-container">
+                            <p class="task__description">Review Chapter 3</p>
+                            <p class="task__date">05.02.2021 - 11:00</p>
+                        </div>
+                        <div class="task__btn-container">
+                            <button class="task__complete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button class="task__delete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="task__icon-container">
+                            <div class="task__icon">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-pencil2"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="task__text-container">
+                            <p class="task__description">Review Chapter 3</p>
+                            <p class="task__date">05.02.2021 - 11:00</p>
+                        </div>
+                        <div class="task__btn-container">
+                            <button class="task__complete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button class="task__delete-btn">
+                                <svg>
+                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="todo__footer">
-                <button type="button" class="btn_choose_sent bg_btn_chose_1">
-                    <input type="radio" name="category" checked />Coding
-                </button>
-                <button type="button" class="btn_choose_sent bg_btn_chose_2">
-                    <input type="radio" name="category" />Finances
-                </button>
-                <button type="button" class="btn_choose_sent bg_btn_chose_3">
-                    <input type="radio" name="category" />Household
-                </button>
-                <button type="button" class="btn_choose_sent bg_btn_chose_3">
-                    <input type="radio" name="task-status" />All
-                </button>
-                <button type="button" class="btn_choose_sent bg_btn_chose_3">
-                    <input type="radio" name="task-status" />Active
-                </button>
-                <button type="button" class="btn_choose_sent bg_btn_chose_3">
-                    <input type="radio" name="task-status" />Done
-                </button>
+                <div class="category-btns">
+                    <p>Categories:</p>
+                    <input type="checkbox" id="category-coding">
+                    <label for="category-coding" class="btn">Coding</label>
+                    <input type="checkbox" id="category-finance">
+                    <label for="category-finance" class="btn">Finances</label>
+                    <input type="checkbox" id="category-household">
+                    <label for="category-household" class="btn">Household</label>
+                </div>
+                <div class="task-status-btns">
+                    <p>Status:</p>
+                    <input type="checkbox" id="task-open">
+                    <label for="task-open" class="btn">Open</label>
+                    <input type="checkbox" id="task-done">
+                    <label for="task-done" class="btn">Done</label>
+                </div>
+
             </div>
         </div>
     </main>
