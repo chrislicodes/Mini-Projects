@@ -1,6 +1,6 @@
 # User Stories
 
-- [ ] As a user I want to be able to use Todo list on any device including mobile and desktop
+- [x] As a user I want to be able to use Todo list on any device including mobile and desktop
 - [ ] As a user I want to be able to add new Todo
 - [ ] As a user I want to be able to complete a Todo
 - [ ] As a user I want to be able to remove a Todo

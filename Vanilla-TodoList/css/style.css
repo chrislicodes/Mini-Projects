@@ -29,6 +29,7 @@
 *,
 *::after,
 *::before {
+  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -39,8 +40,21 @@ form {
 }
 
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
+}
+
+@media (max-width: 660px), (max-height: 900px) {
+  html {
+    font-size: 59.5%;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 48.5%;
+  }
 }
 
 body {
@@ -53,13 +67,23 @@ body {
 
   height: 100vh;
 
-  background: var(--linear-gradient-color-3); /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right bottom,
+  background: var(
+    --linear-gradient-color-3
+  ); /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
+  background: -o-linear-gradient(
+    left top,
     var(--linear-gradient-color-1),
     var(--linear-gradient-color-2),
     var(--linear-gradient-color-3)
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(var(--linear-gradient-color-1)),
+    color-stop(var(--linear-gradient-color-2)),
+    to(var(--linear-gradient-color-3))
+  );
   background: linear-gradient(
     to right bottom,
     var(--linear-gradient-color-1),
@@ -68,52 +92,43 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  top: 40rem;
-  left: 21rem;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    var(--linear-gradient-color-4),
-    var(--linear-gradient-color-5)
-  );
-  clip-path: circle(16rem at center);
-  overflow: hidden;
-}
-
-body::after {
-  content: "";
-  position: absolute;
-  top: -18rem;
-  left: -22rem;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    var(--linear-gradient-color-6),
-    var(--color-primary)
-  );
-  clip-path: circle(14rem at center);
-  z-index: -1;
-  overflow: hidden;
-}
-
 /* ----------------------------------------------
 --------- Heading
 ------------------------------------------------- */
 
 .heading-container {
   height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
+@media (max-height: 815px) {
+  .heading-container {
+    opacity: 0;
+    height: 1rem;
+  }
+}
+
 .heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   color: var(--color-white);
   text-transform: uppercase;
@@ -132,7 +147,11 @@ body::after {
 
 /* ----- General */
 .todo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -140,10 +159,18 @@ body::after {
   height: 70rem;
   width: 50rem;
 
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 
   background: rgba(255, 255, 255, 0.25);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -153,9 +180,61 @@ body::after {
   overflow: hidden;
 }
 
-/* ----- Layout */
+.todo-container:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--linear-gradient-color-6)),
+    to(var(--color-primary))
+  );
+  background: -o-linear-gradient(
+    var(--linear-gradient-color-6),
+    var(--color-primary)
+  );
+  background: linear-gradient(
+    var(--linear-gradient-color-6),
+    var(--color-primary)
+  );
+  -webkit-clip-path: circle(15rem at 60% 85%);
+  clip-path: circle(15rem at 60% 85%);
+  z-index: -1;
+}
+
+.todo-container:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--linear-gradient-color-6)),
+    to(var(--color-primary))
+  );
+  background: -o-linear-gradient(
+    var(--linear-gradient-color-6),
+    var(--color-primary)
+  );
+  background: linear-gradient(
+    var(--linear-gradient-color-6),
+    var(--color-primary)
+  );
+  -webkit-clip-path: circle(15rem at 40% 30%);
+  clip-path: circle(15rem at 40% 30%);
+  z-index: -1;
+}
+
 .todo__header {
-  flex: 0 0 20%;
   border-radius: 2rem;
   background-color: var(--color-grey);
 }
@@ -163,18 +242,27 @@ body::after {
 .todo__main {
   overflow: scroll;
   overflow-x: hidden;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 70%;
+  flex: 1 1 70%;
 }
 
 .todo__footer {
   background-color: var(--color-grey);
 }
-/* -------- HEADER */
 
+/* -------- HEADER */
 /* Input Form */
 
 .input-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
   margin-left: 1rem;
 }
@@ -185,17 +273,17 @@ body::after {
 }
 
 .input-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
 }
 
 .input-btn-container {
-  flex: 1 1 10%;
-  padding-left: 1rem;
+  margin-right: 2rem;
 }
 
 .input-time-info {
-  flex: 1 1 50%;
+  margin-bottom: 2rem;
 }
 
 .input-time-info > * {
@@ -203,10 +291,7 @@ body::after {
   border-radius: 0.5rem;
   border: 0.1rem solid var(--color-grey-dark);
   cursor: pointer;
-}
-
-.input-time {
-  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .input-text {
@@ -222,14 +307,11 @@ body::after {
 .btn:active,
 .btn:focus,
 .btn:visited {
+  -webkit-transition: all 0.1s;
+  -o-transition: all 0.1s;
   transition: all 0.1s;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0);
-}
-
-.btn:hover {
-  color: var(--color-white);
-  cursor: pointer;
 }
 
 .input-btn,
@@ -243,20 +325,28 @@ body::after {
 }
 
 .input-category {
-  margin-left: 1rem;
   width: 10rem;
 }
 
 .input-btn:hover {
   background-color: var(--color-primary);
+  color: var(--color-white);
+  cursor: pointer;
 }
 
 /* ------- TASK DESIGN */
 
 /* General */
 .tasks-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -265,7 +355,11 @@ body::after {
 }
 
 .task {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   height: 10rem;
   width: 95%;
@@ -273,7 +367,21 @@ body::after {
   margin-top: 1.5rem;
   border-radius: 0.75rem;
   border: 0.2rem solid rgba(31, 38, 135, 0);
+  -webkit-transition: border 0.25s;
+  -o-transition: border 0.25s;
   transition: border 0.25s;
+}
+
+@media (max-width: 500px) {
+  .todo {
+    height: 75vh;
+  }
+}
+
+@media (max-height: 815px) {
+  .todo {
+    height: 98vh;
+  }
 }
 
 .task:hover {
@@ -282,15 +390,29 @@ body::after {
 
 /* Icon */
 .task__icon-container {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 25%;
   flex: 1 1 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .task__icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 7rem;
   width: 7rem;
@@ -306,8 +428,36 @@ body::after {
 
 /* Text */
 .task__text-container {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 70%;
   flex: 1 1 70%;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.align {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .task__text-container > p {
@@ -315,7 +465,6 @@ body::after {
 }
 
 .task__description {
-  margin-top: 2.5rem;
   font-size: 1.75rem;
   font-weight: 700;
 }
@@ -327,8 +476,14 @@ body::after {
 /* Button */
 .task__btn-container {
   margin-right: 1.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -374,7 +529,11 @@ body::after {
 /* Checkbox Buttons */
 
 .todo__footer > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   font-size: 1.25rem;
   margin: 1rem 0 0 1.2rem;
@@ -394,7 +553,7 @@ body::after {
 
 .todo__footer label:hover {
   cursor: pointer;
-  opacity: 0.7;
+  color: var(--color-white);
 }
 
 .todo__footer p {
@@ -421,6 +580,10 @@ body::after {
   color: var(--category-color);
 }
 
+.category-btns label:hover {
+  background-color: var(--category-color);
+}
+
 .category-btns input:checked + label {
   background-color: var(--category-color);
   color: #fff;
@@ -429,6 +592,10 @@ body::after {
 .task-status-btns label {
   border: 0.2rem solid var(--linear-gradient-color-3);
   color: var(--linear-gradient-color-3);
+}
+
+.task-status-btns label:hover {
+  background-color: var(--linear-gradient-color-3);
 }
 
 .task-status-btns input:checked + label {

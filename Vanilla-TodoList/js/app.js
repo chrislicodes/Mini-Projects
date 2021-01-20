@@ -1,6 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
-  console.log("ready");
-});
+"use strict";
 
 const submitBtn = document.querySelector(".input-btn");
 submitBtn.addEventListener("click", function (e) {
