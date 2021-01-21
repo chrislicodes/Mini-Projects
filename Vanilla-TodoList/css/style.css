@@ -444,6 +444,7 @@ body {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  transition: all 0.5s;
 }
 
 .align {
@@ -489,7 +490,7 @@ body {
 
 .task__btn-container > button {
   display: inline-block;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0);
   border: none;
   cursor: pointer;
   margin: 0.75rem;
@@ -505,6 +506,16 @@ body {
   height: 2rem;
   width: 2rem;
   fill: rgb(236, 63, 63);
+}
+
+/* COMPLETE TASK DESIGN */
+
+.complete {
+  background-color: rgb(199, 199, 199);
+}
+
+.complete .task__text-container > p {
+  text-decoration: line-through;
 }
 
 /* Scrollbar */

@@ -30,14 +30,15 @@
     <main class="todo-container">
         <div class="todo">
             <div class="todo__header">
-                <form class="input-form">
+                <form class="input-form" name="input-form" enctype="multipart/form-data">
                     <div class="input-text-container">
-                        <input type="text" class="input-text" placeholder="The next thing I have to do is .." required>
+                        <input type="text" name="description" class="input-text"
+                            placeholder="The next thing I have to do is .." required>
                     </div>
                     <div class="input-controls">
                         <div class="input-time-info">
-                            <input type="date" max="2099-12-31" class="input-date" required>
-                            <input type="time" value="13:30" class="input-time" required>
+                            <input type="date" name="date" max="2099-12-31" class="input-date" required>
+                            <input type="time" name="time" value="13:30" class="input-time" required>
                             <select name="category" id="category" class="input-category">
                                 <option value="coding">Coding</option>
                                 <option value="finance">Finances</option>
@@ -52,11 +53,11 @@
             </div>
             <div class="todo__main">
                 <div class="tasks-container">
-                    <div class="task" draggable="true">
+                    <!-- <div class="task" draggable="true">
                         <div class="task__icon-container">
                             <div class="task__icon">
                                 <svg>
-                                    <use xlink:href="./img/sprites.svg#icon-coin-euro"></use>
+                                    <use xlink:href="./img/sprites.svg#coding"></use>
                                 </svg>
                             </div>
                         </div>
@@ -65,18 +66,18 @@
                             <p class="task__date">04.02.2021 - 13:00</p>
                         </div>
                         <div class="task__btn-container">
-                            <button class="task__complete-btn">
+                            <button class="task__complete-btn" data-tag="complete">
                                 <svg>
                                     <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
                                 </svg>
                             </button>
-                            <button class="task__delete-btn">
+                            <button class="task__delete-btn" data-tag="delete">
                                 <svg>
                                     <use xlink:href="./img/sprites.svg#icon-cross"></use>
                                 </svg>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="todo__footer">
