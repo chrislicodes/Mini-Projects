@@ -537,6 +537,16 @@ body {
   background-color: var(--color-primary);
 }
 
+/* DRAG TASK DESIGN */
+
+.dragover {
+  background-color: var(--color-primary-hover);
+}
+
+.hold {
+  opacity: 0.5;
+  background-color: rgb(175, 175, 175);
+}
 /* Checkbox Buttons */
 
 .todo__footer > div {

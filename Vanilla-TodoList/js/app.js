@@ -11,7 +11,6 @@ const taskContainer = document.querySelector(".tasks-container");
 class App {
   /**
    * Initializes and manages the app state
-   *
    */
 
   //State of the app
@@ -28,6 +27,16 @@ class App {
     inputForm.addEventListener("submit", processInput);
     taskContainer.addEventListener("click", processClickEvent);
 
+    //Drag - Events
+    taskContainer.addEventListener("dragstart", processDragStart);
+    taskContainer.addEventListener("dragend", processDragEnd);
+
+    taskContainer.addEventListener("dragenter", processDragEnter);
+    taskContainer.addEventListener("dragover", processDragOver);
+    taskContainer.addEventListener("dragleave", processDragLeave);
+
+    taskContainer.addEventListener("drop", processDragDrop);
+
     //Set the date in the input form to current date
     inputDate.setAttribute("value", new Date().toISOString().slice(0, 10));
   }
@@ -37,6 +46,7 @@ class App {
      * adds a todo to the state of the app
      * @param todoObj {Todo} - todo - Object created with Todo class   *
      */
+    todoObj.pos = this.#state.todos.length + 1;
     this.#state.todos.push(todoObj);
   }
 
@@ -82,7 +92,7 @@ class App {
      * ToDo-Component, creates a single HTML component and inserts it to the DOM
      * @param todoObj {Todo} - todo - Object created with Todo class
      */
-    let { id, category, description, date } = todoObj;
+    let { id, category, description, date, pos } = todoObj;
     const lang = navigator.language;
 
     //Formatting the date
@@ -103,7 +113,7 @@ class App {
     if (description.length > descLength)
       description = description.slice(0, descLength) + "...";
 
-    const markup = `<div class="task" draggable="true" data-id=${id}>
+    const markup = `<div class="task" draggable="true" data-id=${id} data-pos=${pos}>
     <div class="task__icon-container">
         <div class="task__icon">
             <svg>
@@ -145,6 +155,7 @@ class Todo {
     this.category = cat;
 
     this.completed = false;
+    this.pos = 0;
   }
 
   toggleCompleted() {
@@ -234,6 +245,52 @@ const processClickEvent = function (e) {
 
   if (tag === "complete") {
     app.completeTodo(todo);
+  }
+};
+
+let dragged;
+
+const processDragStart = function (e) {
+  e.target.classList.add("hold");
+  dragged = e.target;
+};
+
+const processDragEnd = function (e) {
+  e.target.classList.remove("hold");
+};
+
+const processDragEnter = function (e) {
+  const target = e.target;
+  const taskEL = target.closest(".task");
+  if (taskEL && taskEL !== dragged) taskEL.classList.add("dragover");
+};
+
+const processDragLeave = function (e) {
+  const target = e.target;
+  const taskEL = target.closest(".task");
+  if (taskEL === target && taskEL !== dragged) {
+    taskEL.classList.remove("dragover");
+  }
+};
+const processDragOver = function (e) {
+  e.preventDefault();
+};
+
+const processDragDrop = function (e) {
+  e.preventDefault();
+  const target = e.target;
+  const taskEL = target.closest(".task");
+  if (taskEL && taskEL !== dragged) {
+    const taskElPos = taskEL.dataset.pos;
+    const dragPos = dragged.dataset.pos;
+
+    const insertPos = taskElPos > dragPos ? "afterEnd" : "beforeBegin";
+
+    taskEL.insertAdjacentElement(insertPos, dragged);
+    taskEL.classList.remove("dragover");
+
+    taskEL.setAttribute("data-pos", dragPos);
+    dragged.setAttribute("data-pos", taskElPos);
   }
 };
 
