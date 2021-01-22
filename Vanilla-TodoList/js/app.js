@@ -113,7 +113,7 @@ class App {
     if (description.length > descLength)
       description = description.slice(0, descLength) + "...";
 
-    const markup = `<div class="task" draggable="true" data-id=${id} data-pos=${pos}>
+    const markup = `<div class="task" draggable="true" data-id=${id}>
     <div class="task__icon-container">
         <div class="task__icon">
             <svg>
@@ -140,6 +140,14 @@ class App {
   </div>`;
 
     taskContainer.insertAdjacentHTML("beforeend", markup);
+  }
+
+  returnTodo(id) {
+    return this.#state.todos.find((el) => el.id === +id);
+  }
+
+  logTodos() {
+    console.log(this.#state.todos);
   }
 }
 class Todo {
@@ -268,10 +276,11 @@ const processDragEnter = function (e) {
 const processDragLeave = function (e) {
   const target = e.target;
   const taskEL = target.closest(".task");
-  if (taskEL === target && taskEL !== dragged) {
+  if (taskEL && taskEL === target && taskEL !== dragged) {
     taskEL.classList.remove("dragover");
   }
 };
+
 const processDragOver = function (e) {
   e.preventDefault();
 };
@@ -280,19 +289,53 @@ const processDragDrop = function (e) {
   e.preventDefault();
   const target = e.target;
   const taskEL = target.closest(".task");
+
   if (taskEL && taskEL !== dragged) {
-    const taskElPos = taskEL.dataset.pos;
-    const dragPos = dragged.dataset.pos;
+    const taskElTodo = app.returnTodo(taskEL.dataset.id);
+    const taskElPos = taskElTodo.pos;
+
+    const dragTodo = app.returnTodo(dragged.dataset.id);
+    const dragPos = dragTodo.pos;
+
+    console.log("BEFORE");
+    console.log(taskElTodo);
+    console.log(dragTodo);
 
     const insertPos = taskElPos > dragPos ? "afterEnd" : "beforeBegin";
 
     taskEL.insertAdjacentElement(insertPos, dragged);
     taskEL.classList.remove("dragover");
 
-    taskEL.setAttribute("data-pos", dragPos);
-    dragged.setAttribute("data-pos", taskElPos);
+    dragTodo.pos = taskElPos;
+    taskElTodo.pos = insertPos === "afterEnd" ? taskElPos - 1 : taskElPos + 1;
+
+    console.log("AFTER");
+    console.log(taskElTodo);
+    console.log(dragTodo);
+
+    console.log(app.logTodos());
   }
 };
+
+// const getDragAfterElement = function (mouseY) {
+//   const tasks = Array.from(document.querySelectorAll(".task:not(.hold)"));
+
+//   return tasks.reduce(
+//     (closest, child) => {
+//       const box = child.getBoundingClientRect();
+
+//       //get the center
+//       const offset = mouseY - box.top - box.height / 2;
+
+//       if (offset < 0 && offset > closest.offset) {
+//         return { offset: offset, element: child };
+//       } else {
+//         return closest;
+//       }
+//     },
+//     { offset: Number.NEGATIVE_INFINITY }
+//   ).element;
+// };
 
 const app = new App();
 app.init();
