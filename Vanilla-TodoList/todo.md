@@ -7,4 +7,4 @@
 - [ ] As a user I want to be able to filter my todos per category
 - [ ] As a user I want to be able to see completed Todos
 - [ ] As a user I want to be able to work with todos even if I close my browser and open it again
-- [ ] As a user I want to be able to reorder todos using drag-and-drop technique so that I can see the most important todo on the top
+- [x] As a user I want to be able to reorder todos using drag-and-drop technique so that I can see the most important todo on the top

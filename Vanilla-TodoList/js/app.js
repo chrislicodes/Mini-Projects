@@ -12,8 +12,6 @@ class App {
   /**
    * Initializes and manages the app state
    */
-
-  //State of the app
   #state = {
     todos: [],
   };
@@ -37,17 +35,19 @@ class App {
 
     taskContainer.addEventListener("drop", processDragDrop);
 
-    //Set the date in the input form to current date
+    //Set date in the input form to current date
     inputDate.setAttribute("value", new Date().toISOString().slice(0, 10));
   }
 
   addTodo(todoObj) {
     /**
-     * adds a todo to the state of the app
+     * adds todo to the state of the app
      * @param todoObj {Todo} - todo - Object created with Todo class   *
      */
-    todoObj.pos = this.#state.todos.length + 1;
-    this.#state.todos.push(todoObj);
+
+    this.#state.todos.unshift(todoObj);
+    this._updateTodoPos();
+    this.renderTodo(todoObj);
   }
 
   delTodo(todoEl) {
@@ -65,6 +65,7 @@ class App {
     this.#state.todos.splice(todoIndex, 1);
 
     todoEl.remove();
+    this._updateTodoPos();
   }
 
   completeTodo(todoEl) {
@@ -73,6 +74,7 @@ class App {
      * @param todoEl {HTMLElement} - DOM Object *
      */
     const elID = +todoEl.dataset.id;
+
     let todoObj = this.#state.todos.find((todo) => todo.id === elID);
     todoObj.toggleCompleted();
 
@@ -92,7 +94,7 @@ class App {
      * ToDo-Component, creates a single HTML component and inserts it to the DOM
      * @param todoObj {Todo} - todo - Object created with Todo class
      */
-    let { id, category, description, date, pos } = todoObj;
+    let { id, category, description, date } = todoObj;
     const lang = navigator.language;
 
     //Formatting the date
@@ -139,22 +141,58 @@ class App {
     </div>
   </div>`;
 
-    taskContainer.insertAdjacentHTML("beforeend", markup);
+    taskContainer.insertAdjacentHTML("afterBegin", markup);
   }
 
   returnTodo(id) {
     return this.#state.todos.find((el) => el.id === +id);
   }
 
-  logTodos() {
+  logState() {
     console.log(this.#state.todos);
+  }
+
+  swapTodos(id1, id2, order) {
+    const todo1Ind = this.#state.todos.findIndex((el) => el.id === +id1);
+    const todo2Ind = this.#state.todos.findIndex((el) => el.id === +id2);
+
+    const frontEl = todo1Ind < todo2Ind ? todo1Ind : todo2Ind;
+    const backEl = todo1Ind < todo2Ind ? todo2Ind : todo1Ind;
+
+    let stateTodo = this.#state.todos;
+
+    if (order === "beforeBegin") {
+      const backTodo = stateTodo.splice(backEl, 1);
+      stateTodo = [
+        ...stateTodo.slice(0, frontEl),
+        ...backTodo,
+        ...stateTodo.slice(frontEl),
+      ];
+    }
+
+    if (order === "afterEnd") {
+      const frontTodo = stateTodo.splice(frontEl, 1);
+      stateTodo = [
+        ...stateTodo.slice(0, backEl),
+        ...frontTodo,
+        ...stateTodo.slice(backEl),
+      ];
+    }
+
+    this.#state.todos = stateTodo;
+    this._updateTodoPos();
+  }
+
+  _updateTodoPos() {
+    this.#state.todos.forEach((todo, index) => (todo.pos = index + 1));
   }
 }
 class Todo {
   /**
    * Represents a single Todo
-   * @param title {string} - title of the todo
+   * @param desc {string} - description of the todo
    * @param date {Date} - date the todo must be completed
+   * @param cat {string} - category of the todo
    */
   constructor(desc, date, cat) {
     this.id = new Date().getTime();
@@ -168,7 +206,6 @@ class Todo {
 
   toggleCompleted() {
     this.completed = this.completed ? false : true;
-    console.log(this);
   }
 }
 
@@ -207,6 +244,8 @@ const processInput = function (e) {
   //create formData Object
   const formData = new FormData(inputForm);
   const data = {};
+
+  //populate data-object
   formData.forEach((value, key) => (data[key] = value));
 
   //clean input Form
@@ -230,7 +269,6 @@ const processInput = function (e) {
 
   //add and render todo to the app
   app.addTodo(newTodo);
-  app.renderTodo(newTodo);
 };
 
 const processClickEvent = function (e) {
@@ -256,25 +294,36 @@ const processClickEvent = function (e) {
   }
 };
 
+//DRAG AND DROP LOGIC
+
 let dragged;
 
 const processDragStart = function (e) {
   e.target.classList.add("hold");
+
+  //keeping track of dragged element
   dragged = e.target;
 };
 
 const processDragEnd = function (e) {
   e.target.classList.remove("hold");
+
+  //clear dragged element
+  dragged = undefined;
 };
 
 const processDragEnter = function (e) {
   const target = e.target;
+
+  //needs optimization
   const taskEL = target.closest(".task");
   if (taskEL && taskEL !== dragged) taskEL.classList.add("dragover");
 };
 
 const processDragLeave = function (e) {
   const target = e.target;
+
+  //needs optimization
   const taskEL = target.closest(".task");
   if (taskEL && taskEL === target && taskEL !== dragged) {
     taskEL.classList.remove("dragover");
@@ -282,60 +331,43 @@ const processDragLeave = function (e) {
 };
 
 const processDragOver = function (e) {
+  //preventing default to allow drop event
   e.preventDefault();
 };
 
 const processDragDrop = function (e) {
+  //preventing default to allow drop event
   e.preventDefault();
+
   const target = e.target;
   const taskEL = target.closest(".task");
 
+  //if dropped over another task besides the dragged one
   if (taskEL && taskEL !== dragged) {
-    const taskElTodo = app.returnTodo(taskEL.dataset.id);
-    const taskElPos = taskElTodo.pos;
+    //get the ids
+    const taskElID = taskEL.dataset.id;
+    const dragID = dragged.dataset.id;
 
-    const dragTodo = app.returnTodo(dragged.dataset.id);
+    //get the todos from the app-state
+    const taskElTodo = app.returnTodo(taskElID);
+    const dragTodo = app.returnTodo(dragID);
+
+    //get the current position of the todos
+    const taskElPos = taskElTodo.pos;
     const dragPos = dragTodo.pos;
 
-    console.log("BEFORE");
-    console.log(taskElTodo);
-    console.log(dragTodo);
-
+    //if we move a todo up, we want to insert it before the traget element, otherwise after it
     const insertPos = taskElPos > dragPos ? "afterEnd" : "beforeBegin";
-
     taskEL.insertAdjacentElement(insertPos, dragged);
+
     taskEL.classList.remove("dragover");
 
-    dragTodo.pos = taskElPos;
-    taskElTodo.pos = insertPos === "afterEnd" ? taskElPos - 1 : taskElPos + 1;
+    //update the state
+    app.swapTodos(taskElID, dragID, insertPos);
 
-    console.log("AFTER");
-    console.log(taskElTodo);
-    console.log(dragTodo);
-
-    console.log(app.logTodos());
+    app.logState();
   }
 };
-
-// const getDragAfterElement = function (mouseY) {
-//   const tasks = Array.from(document.querySelectorAll(".task:not(.hold)"));
-
-//   return tasks.reduce(
-//     (closest, child) => {
-//       const box = child.getBoundingClientRect();
-
-//       //get the center
-//       const offset = mouseY - box.top - box.height / 2;
-
-//       if (offset < 0 && offset > closest.offset) {
-//         return { offset: offset, element: child };
-//       } else {
-//         return closest;
-//       }
-//     },
-//     { offset: Number.NEGATIVE_INFINITY }
-//   ).element;
-// };
 
 const app = new App();
 app.init();
