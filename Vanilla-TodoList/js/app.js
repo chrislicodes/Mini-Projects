@@ -153,6 +153,13 @@ class App {
   }
 
   swapTodos(id1, id2, order) {
+    /**
+     * Swaps todo position in the state
+     * @param id1 {string} - first id of todo to be swapped
+     * @param id2 {string} - second id of todo to be swapped
+     * @param order {string} - string indicating if a todo should be inserted before or after
+     */
+
     const todo1Ind = this.#state.todos.findIndex((el) => el.id === +id1);
     const todo2Ind = this.#state.todos.findIndex((el) => el.id === +id2);
 
@@ -356,7 +363,7 @@ const processDragDrop = function (e) {
     const taskElPos = taskElTodo.pos;
     const dragPos = dragTodo.pos;
 
-    //if we move a todo up, we want to insert it before the traget element, otherwise after it
+    //if we move a todo up, we want to insert it before the target element, otherwise after it
     const insertPos = taskElPos > dragPos ? "afterEnd" : "beforeBegin";
     taskEL.insertAdjacentElement(insertPos, dragged);
 
