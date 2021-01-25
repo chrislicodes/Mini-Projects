@@ -1,9 +1,7 @@
-# **Mini Projects**
+# **Vanilla ToDo-List**
 
-## **1. Vanilla ToDo - List**
+A simple web app written in HTML5, CSS3 and JS (ES6+).
 
-- HTML5
-- CSS3
-- JS
+## Features
 
-### Planned Features: tbd
+- tbd
