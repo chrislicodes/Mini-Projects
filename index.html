@@ -15,117 +15,72 @@
         rel="stylesheet">
 
     <meta name="theme-color" content="#fafafa">
-
-    <link rel="stylesheet" href="./css/style.css">
-    <script defer src="./js/app.js"></script>
 </head>
 
 <body>
-    <header class="heading-container">
-        <h1 class="heading">
-            <span class="heading__primary">Minimal ToDo - List</span>
-            <span class="heading__secondary">Getting things done - one line at a time</span>
-        </h1>
+    <header>
+        <h1>Minimal ToDo - List</h1>
+        <h2>Getting things done - one line at a time</h2>
     </header>
-    <main class="todo-container">
-        <div class="todo-app">
-            <div class="todo-app__header">
-                <form class="input-form" name="input-form" enctype="multipart/form-data">
-                    <div class="input-text-container">
-                        <input type="text" name="description" class="input-text"
-                            placeholder="The next thing I have to do is .." required>
-                    </div>
-                    <div class="input-control-container">
-                        <div class="input-time-info">
-                            <input type="date" name="date" max="2099-12-31" class="input-date" required>
-                            <input type="time" name="time" value="13:30" class="input-time" required>
-                            <select name="category" id="category" class="input-category">
-                                <option value="coding">Coding</option>
-                                <option value="finance">Finances</option>
-                                <option value="household">Household</option>
-                            </select>
-                        </div>
-                        <div class="input-btn-container">
-                            <button class="input-btn btn">Add Task :&#41;</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="todo-app__main">
-                <div class="tasks-container">
-                    <div class="task" draggable="true" data-id="1611597503560">
-                        <div class="task__icon-container">
-                            <div class="task__icon">
-                                <svg>
-                                    <use xlink:href="./img/sprites.svg#coding"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="task__text-container">
-                            <p class="task__description">Finish Issue #5</p>
-                            <p class="task__date">25.01.21 - 20:30</p>
-                        </div>
-                        <div class="task__btn-container">
-                            <button class="task__complete-btn" data-tag="complete">
-                                <svg>
-                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
-                                </svg>
-                            </button>
-                            <button class="task__delete-btn" data-tag="delete">
-                                <svg>
-                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="task complete" draggable="true" data-id="1611597524641">
-                        <div class="task__icon-container">
-                            <div class="task__icon">
-                                <svg>
-                                    <use xlink:href="./img/sprites.svg#finance"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="task__text-container">
-                            <p class="task__description">Create a budget for 2021</p>
-                            <p class="task__date">27.01.21 - 20:30</p>
-                        </div>
-                        <div class="task__btn-container">
-                            <button class="task__complete-btn" data-tag="complete">
-                                <svg>
-                                    <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
-                                </svg>
-                            </button>
-                            <button class="task__delete-btn" data-tag="delete">
-                                <svg>
-                                    <use xlink:href="./img/sprites.svg#icon-cross"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="todo-app__footer">
-                <form class="filter-form" name="filter-form" enctype="multipart/form-data">
-                    <div class="category-btns">
-                        <p>Categories:</p>
-                        <input type="checkbox" id="category-coding">
-                        <label for="category-coding" class="btn">Coding</label>
-                        <input type="checkbox" id="category-finance">
-                        <label for="category-finance" class="btn">Finances</label>
-                        <input type="checkbox" id="category-household">
-                        <label for="category-household" class="btn">Household</label>
-                    </div>
-                    <div class="task-status-btns">
-                        <p>Status:</p>
-                        <input type="checkbox" id="task-open">
-                        <label for="task-open" class="btn">Open</label>
-                        <input type="checkbox" id="task-done">
-                        <label for="task-done" class="btn">Done</label>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <main>
+        <form name="input-form" enctype="multipart/form-data">
+            <input type="text" name="description" placeholder="The next thing I have to do is .." required="required">
+            <input type="date" name="date" max="2099-12-31" required="required">
+            <input type="time" name="time" value="13:30" required="required">
+            <select name="category" id="category">
+                <option value="coding">Coding</option>
+                <option value="finance">Finances</option>
+                <option value="household">Household</option>
+            </select>
+
+            <button type="submit">Add Task :&#41;</button>
+
+        </form>
+        <ol>
+            <li>
+                <svg>
+                    <use xlink:href="./img/sprites.svg#coding"></use>
+                </svg>
+
+                <p>Finish Issue #5</p>
+                <p>25.01.21 - 20:30</p>
+
+                <button type="submit" data-tag="complete">
+                    <svg>
+                        <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                    </svg>
+                </button>
+                <button type="submit" data-tag="delete">
+                    <svg>
+                        <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <svg>
+                    <use xlink:href="./img/sprites.svg#finance"></use>
+                </svg>
+                <p>Create a budget for 2021</p>
+                <p>27.01.21 - 20:30</p>
+                <button type="submit" data-tag="complete">
+                    <svg>
+                        <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                    </svg>
+                </button>
+                <button type="submit" data-tag="delete">
+                    <svg>
+                        <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                    </svg>
+                </button>
+            </li>
+        </ol>
+        <form name="filter-form" enctype="multipart/form-data">
+            <p>Status:</p>
+            <input type="checkbox" id="task-open">
+            <label for="task-open">Open</label>
+            <input type="checkbox" id="task-done">
+            <label for="task-done">Done</label>
+        </form>
     </main>
 </body>
 
