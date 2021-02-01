@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -21,9 +22,10 @@
         <h1>Minimal ToDo - List</h1>
         <h2>Getting things done - one line at a time</h2>
     </header>
-    <main>
-        <form name="input-form" enctype="multipart/form-data">
-            <input type="text" name="description" placeholder="The next thing I have to do is .." required="required">
+    <main class="todo-app">
+        <form name="input-form" enctype="multipart/form-data" class="input-form">
+            <input type="text" name="description" placeholder="The next thing I have to do is .." required="required"
+                class="input-form__description">
             <input type="date" name="date" max="2099-12-31" required="required">
             <input type="time" name="time" value="13:30" required="required">
             <select name="category" id="category">
@@ -32,12 +34,12 @@
                 <option value="household">Household</option>
             </select>
 
-            <button type="submit">Add Task :&#41;</button>
+            <button type="submit" class="input-form__submit">Add Task :&#41;</button>
 
         </form>
-        <ol>
+        <ol class="todo-list">
             <li>
-                <article>
+                <article class="todo-list-item">
                     <svg>
                         <use xlink:href="./img/sprites.svg#coding"></use>
                     </svg>
@@ -58,7 +60,7 @@
                 </article>
             </li>
             <li>
-                <article>
+                <article class="todo-list-item">
                     <svg>
                         <use xlink:href="./img/sprites.svg#finance"></use>
                     </svg>
@@ -77,7 +79,7 @@
                 </article>
             </li>
         </ol>
-        <form name="filter-form" enctype="multipart/form-data">
+        <form name="filter-form" enctype="multipart/form-data" class="filter-form">
             <p>Status:</p>
             <input type="checkbox" id="task-open">
             <label for="task-open">Open</label>

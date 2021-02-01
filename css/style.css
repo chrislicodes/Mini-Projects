@@ -8,6 +8,7 @@
   --color-white: #fafafa;
   --color-grey-light: #ebebeb;
   --color-grey-dark: #a5a5a5;
+  --color-black: #141414;
 
   --color-category: #154cb3;
 
@@ -42,3 +43,118 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-black);
+
+  min-height: 100vh;
+  overflow: hidden;
+
+  background: linear-gradient(
+    to right bottom,
+    var(--color-linear-gradient-1),
+    var(--color-linear-gradient-2),
+    var(--color-linear-gradient-3)
+  );
+}
+
+/* ----------------------------------------------
+--------- Heading
+------------------------------------------------- */
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-white);
+  text-transform: uppercase;
+
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+/* ----------------------------------------------
+--------- TO-DO List
+------------------------------------------------- */
+
+/* ---------> TO-DO List Container  */
+.todo-app {
+  background-color: red;
+  border-radius: 5rem;
+
+  min-width: 30%;
+
+  border: 1rem solid var(--color-white);
+}
+
+/* ---------> TO-DO List Header  */
+.input-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 12rem;
+
+  border-radius: 1.5rem;
+
+  background-color: var(--color-white);
+}
+
+.input-form > * {
+  margin-left: 1.2rem;
+  height: 3.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-grey-dark);
+}
+
+.input-form__description {
+  width: 95%;
+  height: 4.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+}
+
+.input-form__submit {
+  width: 12rem;
+  background-color: transparent;
+  border: 0.15rem solid var(--color-primary);
+  border-radius: 0.75rem;
+  color: var(--color-primary);
+  font-weight: bold;
+  height: 3.5rem;
+}
+
+/* ---------> TO-DO List Body  */
+.todo-list {
+  background-color: orange;
+}
+
+/* ---------> TO-DO List Item */
+.todo-list-item {
+  border: 1px solid black;
+}
+
+/* ---------> TO-DO List Footer  */
+.filter-form {
+  background-color: violet;
+}
+
+/* ----------------------------------------------
+--------- Media Queries
+------------------------------------------------- */
