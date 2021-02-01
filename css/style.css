@@ -1,0 +1,44 @@
+/* ----------------------------------------------
+--------- Basic Setup
+------------------------------------------------- */
+:root {
+  --color-primary: rgba(233, 32, 82, 0.9);
+  --color-primary-hover: rgba(233, 32, 82, 0.6);
+
+  --color-white: #fafafa;
+  --color-grey-light: #ebebeb;
+  --color-grey-dark: #a5a5a5;
+
+  --color-category: #154cb3;
+
+  --color-linear-gradient-1: #91eae4;
+  --color-linear-gradient-2: #86a8e7;
+  --color-linear-gradient-3: #7f7fd5;
+
+  --color-linear-gradient-4: rgba(255, 0, 0, 0.9);
+  --color-linear-gradient-5: rgba(219, 0, 219, 0.9);
+
+  --color-linear-gradient-6: rgba(32, 148, 243, 0.9);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+input,
+button,
+form {
+  font-family: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
+}
