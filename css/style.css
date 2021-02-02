@@ -1,6 +1,9 @@
 /* ----------------------------------------------
 --------- Basic Setup
 ------------------------------------------------- */
+
+/* ---------> Variables  */
+
 :root {
   --color-primary: rgba(233, 32, 82, 0.9);
   --color-primary-hover: rgba(233, 32, 82, 0.6);
@@ -21,6 +24,8 @@
 
   --color-linear-gradient-6: rgba(32, 148, 243, 0.9);
 }
+
+/* ---------> Reset  */
 
 * {
   margin: 0;
@@ -43,6 +48,8 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
 }
+
+/* ---------> Setup  */
 
 body {
   display: flex;
@@ -96,11 +103,9 @@ h2 {
 
 /* ---------> TO-DO List Container  */
 .todo-app {
-  background-color: red;
-  border-radius: 5rem;
-
   min-width: 30%;
 
+  border-radius: 5rem;
   border: 1rem solid var(--color-white);
 }
 
@@ -109,6 +114,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+
   height: 12rem;
 
   border-radius: 1.5rem;
@@ -117,27 +123,58 @@ h2 {
 }
 
 .input-form > * {
+  outline: unset;
   margin-left: 1.2rem;
+  padding-left: 0.5rem;
   height: 3.25rem;
+
   border-radius: 0.5rem;
-  border: 1px solid var(--color-grey-dark);
+  border: 1.5px solid var(--color-grey-dark);
+
+  transition: all 0.3s;
+}
+
+.input-form > *:hover,
+.input-form > *:focus {
+  border: 1.5px solid var(--color-primary);
 }
 
 .input-form__description {
-  width: 95%;
+  width: 100%;
   height: 4.5rem;
   margin-bottom: 1.5rem;
+
   border-radius: 1rem;
+
+  font-size: 1.6rem;
 }
 
-.input-form__submit {
-  width: 12rem;
+.submit-btn {
+  width: 14rem;
+  height: 4rem;
+
+  margin-left: auto;
+  padding: 0;
+
   background-color: transparent;
+
   border: 0.15rem solid var(--color-primary);
   border-radius: 0.75rem;
-  color: var(--color-primary);
+
   font-weight: bold;
-  height: 3.5rem;
+  color: var(--color-primary);
+
+  transition: all 0.15s;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.input-form__description,
+.submit-btn {
+  margin-right: 1.2rem;
 }
 
 /* ---------> TO-DO List Body  */

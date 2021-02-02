@@ -26,7 +26,7 @@
         <form name="input-form" enctype="multipart/form-data" class="input-form">
             <input type="text" name="description" placeholder="The next thing I have to do is .." required="required"
                 class="input-form__description">
-            <input type="date" name="date" max="2099-12-31" required="required">
+            <input type="date" name="date" max="2099-12-31" value="2021-02-01" required="required">
             <input type="time" name="time" value="13:30" required="required">
             <select name="category" id="category">
                 <option value="coding">Coding</option>
@@ -34,7 +34,7 @@
                 <option value="household">Household</option>
             </select>
 
-            <button type="submit" class="input-form__submit">Add Task :&#41;</button>
+            <button type="submit" class="submit-btn">Add Task :&#41;</button>
 
         </form>
         <ol class="todo-list">
