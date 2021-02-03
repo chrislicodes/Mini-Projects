@@ -52,6 +52,7 @@ html {
 /* ---------> Setup  */
 
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,19 +103,32 @@ h2 {
 
 /* ---------> TO-DO List Container  */
 .todo-app {
-  min-width: 30%;
+  flex: 1vh;
+  display: flex;
+  flex-direction: column;
 
-  border-radius: 5rem;
-  border: 1rem solid var(--color-white);
+  max-width: 90%;
+
+  margin-bottom: 2rem;
+
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4rem;
+  border: 7px solid var(--color-white);
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+
+  overflow: hidden;
 }
 
 /* ---------> TO-DO List Header  */
 .input-form {
+  flex: 0 0 12rem;
+  max-width: 50rem;
+
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-
-  height: 12rem;
 
   border-radius: 1.5rem;
 
@@ -155,10 +169,9 @@ h2 {
 .submit-btn:active,
 .submit-btn:focus,
 .submit-btn:visited {
-  width: 14rem;
+  flex-grow: 1;
   height: 4rem;
 
-  margin-left: auto;
   padding: 0;
 
   background-color: transparent;
@@ -184,16 +197,99 @@ h2 {
 
 /* ---------> TO-DO List Body  */
 .todo-list {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   overflow: scroll;
   overflow-x: hidden;
-  align-items: center;
 }
 
 /* ---------> TO-DO List Item */
 .todo-list-item {
-  background-color: green;
+  width: 95%;
+  min-height: 10rem;
+
+  display: flex;
+  align-items: center;
+
+  background-color: var(--color-white);
+  margin-top: 1.5rem;
+  border-radius: 0.75rem;
+  border: 0.2rem solid rgba(31, 38, 135, 0);
+
+  list-style: none;
+}
+
+.todo-list-item-content {
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: 1.5fr 4fr 0.55fr 0.75fr;
+
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon */
+.todo-icon {
+  grid-column: 1;
+
+  height: 4rem;
+  width: 4rem;
+  fill: var(--color-category);
+}
+
+.icon-container {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+
+  height: 7rem;
+  width: 7rem;
+  border: 0.1rem solid var(--color-grey-dark);
+  border-radius: 100rem;
+}
+
+.todo-description {
+  grid-column: 2;
+}
+
+.todo-description h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.todo-description time {
+  font-size: 1.5rem;
+}
+
+/* Buttons */
+
+.todo-list-item-content > button {
+  height: 3rem;
+  width: 3rem;
+
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-complete > svg {
+  grid-column: 3;
+
+  height: 2.25rem;
+  width: 2.25rem;
+  fill: rgb(25, 172, 32);
+}
+
+.btn-delete > svg {
+  grid-column: 4;
+  height: 2rem;
+  width: 2rem;
+  fill: rgb(236, 63, 63);
 }
 
 /* ---------> TO-DO List Footer  */
