@@ -5,24 +5,26 @@
 /* ---------> Variables  */
 
 :root {
-  --color-primary: rgba(233, 32, 82, 0.9);
-  --color-primary-hover: rgba(233, 32, 82, 0.6);
+  --color-primary: #e92052e6;
+  --color-primary-hover: #e9205299;
 
   --color-white: #fafafa;
-  --color-grey-light: #ebebeb;
+  --color-grey-light: #f7f7f7;
   --color-grey-dark: #a5a5a5;
   --color-black: #141414;
 
   --color-category: #154cb3;
+  --color-green-button: #19ac20;
+  --color-red-button: #ec3f3f;
 
   --color-linear-gradient-1: #91eae4;
   --color-linear-gradient-2: #86a8e7;
   --color-linear-gradient-3: #7f7fd5;
 
-  --color-linear-gradient-4: rgba(255, 0, 0, 0.9);
-  --color-linear-gradient-5: rgba(219, 0, 219, 0.9);
+  --color-linear-gradient-4: #ff0000e6;
+  --color-linear-gradient-5: #db00dbe6;
 
-  --color-linear-gradient-6: rgba(32, 148, 243, 0.9);
+  --color-linear-gradient-6: #2094f3e6;
 }
 
 /* ---------> Reset  */
@@ -222,6 +224,10 @@ h2 {
   list-style: none;
 }
 
+.todo-list-item:last-child {
+  margin-bottom: 1.5rem;
+}
+
 .todo-list-item-content {
   flex: 1;
 
@@ -282,19 +288,85 @@ h2 {
 
   height: 2.25rem;
   width: 2.25rem;
-  fill: rgb(25, 172, 32);
+  fill: var(--color-green-button);
 }
 
 .btn-delete > svg {
   grid-column: 4;
+
   height: 2rem;
   width: 2rem;
-  fill: rgb(236, 63, 63);
+  fill: var(--color-red-button);
 }
 
 /* ---------> TO-DO List Footer  */
+
+/* Checkbox Buttons */
+
 .filter-form {
-  background-color: violet;
+  display: flex;
+  align-items: center;
+  height: 10rem;
+
+  font-size: 1.25rem;
+
+  padding-top: 0.75rem;
+
+  background-color: var(--color-grey-light);
+}
+
+.filter-form input {
+  position: absolute;
+  left: -100vw; /* Moving the input out of the view instead of hiding it for accessibility*/
+}
+
+.filter-form label {
+  position: relative;
+  display: inline-block;
+
+  padding: 0.6rem 2rem;
+  margin-left: 1rem;
+
+  border: 0.2rem solid var(--color-linear-gradient-3);
+  border-radius: 0.75rem;
+  color: var(--color-linear-gradient-3);
+}
+
+.filter-form label:hover {
+  cursor: pointer;
+  color: var(--color-white);
+}
+
+.filter-form p {
+  font-weight: 700;
+}
+
+.filter-form input:checked + label::after {
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0.4rem;
+  border: 0.2rem solid #e9e9e9;
+  border-radius: 50%;
+  background: #059f00;
+  content: "";
+  font-size: 1.2rem;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.filter-form label:hover {
+  background-color: var(--color-linear-gradient-3);
+}
+
+.filter-form input:checked + label {
+  background-color: var(--color-linear-gradient-3);
+  color: #fff;
+}
+
+.filter-form > p {
+  margin-left: 2.5rem;
 }
 
 /* TO-DO List Scrollbar */
