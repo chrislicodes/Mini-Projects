@@ -1,19 +1,16 @@
-/* ---------> TO-DO List Container  */
 .todo-app {
   position: relative;
   flex: 1vh;
-
   display: flex;
   flex-direction: column;
 
   max-width: 90%;
-
   margin-bottom: 2rem;
 
-  background: rgba(255, 255, 255, 0.25);
   border-radius: 4rem;
   border: 7px solid var(--color-white);
 
+  background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -24,11 +21,11 @@
 /* ---------> TO-DO List Header  */
 .todo-app .input-form {
   flex: 0 0 12rem;
-  max-width: 50rem;
-
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+
+  max-width: 50rem;
 
   border-radius: 1.5rem;
 
@@ -75,13 +72,12 @@
 
   padding: 0;
 
-  background-color: transparent;
-
   border: 0.15rem solid var(--color-primary);
   border-radius: 0.75rem;
 
   font-weight: bold;
   color: var(--color-primary);
+  background-color: transparent;
 
   transition: all 0.15s;
 }
@@ -107,11 +103,10 @@
   overflow-x: hidden;
 }
 
-/* ---------> TO-DO List Item */
+/* ---> TO-DO List Item */
 .todo-app .todo-list .todo-list-item {
   width: 95%;
   min-height: 10rem;
-
   display: flex;
   align-items: center;
 
@@ -135,15 +130,13 @@
 
 .todo-app .todo-list .todo-list-item .todo-list-item-content {
   flex: 1;
+  align-items: center;
+  justify-content: center;
 
   display: -ms-grid;
-
   display: grid;
   -ms-grid-columns: 1.5fr 4fr 0.55fr 0.75fr;
   grid-template-columns: 1.5fr 4fr 0.55fr 0.75fr;
-
-  align-items: center;
-  justify-content: center;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -153,16 +146,15 @@
 }
 
 /* Icon */
-
 .todo-app .todo-list .todo-list-item .todo-list-item-content .icon-container {
   justify-self: center;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
   height: 7rem;
   width: 7rem;
+
   border: 0.1rem solid var(--color-grey-dark);
   border-radius: 100rem;
 }

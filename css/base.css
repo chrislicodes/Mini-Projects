@@ -55,7 +55,6 @@ body {
 body:before {
   position: absolute;
   content: "";
-
   top: 0;
   left: 0;
   width: 100%;
@@ -67,7 +66,6 @@ body:before {
   );
 
   -webkit-clip-path: circle(15rem at 60% 85%);
-
   clip-path: circle(15rem at 60% 85%);
 
   z-index: -1;
@@ -87,7 +85,6 @@ body:after {
   );
 
   -webkit-clip-path: circle(15rem at 40% 30%);
-
   clip-path: circle(15rem at 40% 30%);
 
   z-index: -1;
