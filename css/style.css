@@ -37,7 +37,6 @@
 *,
 *::after,
 *::before {
-  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -48,7 +47,6 @@ form {
 }
 
 html {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
 }
@@ -58,17 +56,8 @@ html {
 body {
   position: relative;
 
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 
   font-family: "Lato", sans-serif;
@@ -78,22 +67,6 @@ body {
 
   min-height: 100vh;
   overflow: hidden;
-
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    from(var(--color-linear-gradient-1)),
-    color-stop(var(--color-linear-gradient-2)),
-    to(var(--color-linear-gradient-3))
-  );
-
-  background: -o-linear-gradient(
-    left top,
-    var(--color-linear-gradient-1),
-    var(--color-linear-gradient-2),
-    var(--color-linear-gradient-3)
-  );
 
   background: linear-gradient(
     to right bottom,
@@ -108,18 +81,9 @@ body {
 ------------------------------------------------- */
 
 header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 
   color: var(--color-white);
@@ -143,18 +107,9 @@ h2 {
 /* ---------> TO-DO List Container  */
 .todo-app {
   position: relative;
-  -webkit-box-flex: 1vh;
-  -ms-flex: 1vh;
   flex: 1vh;
 
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
 
   max-width: 90%;
@@ -165,8 +120,6 @@ h2 {
   border-radius: 4rem;
   border: 7px solid var(--color-white);
 
-  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -176,19 +129,11 @@ h2 {
 
 /* ---------> TO-DO List Header  */
 .input-form {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 12rem;
   flex: 0 0 12rem;
   max-width: 50rem;
 
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -ms-flex-line-pack: center;
   align-content: center;
 
   border-radius: 1.5rem;
@@ -207,10 +152,6 @@ h2 {
   border: 1.5px solid var(--color-grey-dark);
 
   cursor: pointer;
-
-  -webkit-transition: all 0.3s;
-
-  -o-transition: all 0.3s;
 
   transition: all 0.3s;
 }
@@ -235,8 +176,6 @@ h2 {
 .submit-btn:active,
 .submit-btn:focus,
 .submit-btn:visited {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
   height: 4rem;
 
@@ -249,10 +188,6 @@ h2 {
 
   font-weight: bold;
   color: var(--color-primary);
-
-  -webkit-transition: all 0.15s;
-
-  -o-transition: all 0.15s;
 
   transition: all 0.15s;
 }
@@ -269,18 +204,9 @@ h2 {
 
 /* ---------> TO-DO List Body  */
 .todo-list {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
   flex: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 
   overflow: scroll;
@@ -292,13 +218,7 @@ h2 {
   width: 95%;
   min-height: 10rem;
 
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 
   background-color: var(--color-white);
@@ -307,10 +227,6 @@ h2 {
   border: 0.2rem solid rgba(31, 38, 135, 0);
 
   list-style: none;
-
-  -webkit-transition: all 0.1s;
-
-  -o-transition: all 0.1s;
 
   transition: all 0.1s;
 }
@@ -324,8 +240,6 @@ h2 {
 }
 
 .todo-list-item-content {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
   flex: 1;
 
   display: -ms-grid;
@@ -334,13 +248,7 @@ h2 {
   -ms-grid-columns: 1.5fr 4fr 0.55fr 0.75fr;
   grid-template-columns: 1.5fr 4fr 0.55fr 0.75fr;
 
-  -webkit-box-align: center;
-
-  -ms-flex-align: center;
-
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 
   -webkit-touch-callout: none;
@@ -355,16 +263,8 @@ h2 {
 .icon-container {
   justify-self: center;
 
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 
   height: 7rem;
@@ -430,11 +330,7 @@ h2 {
 /* Checkbox Buttons */
 
 .filter-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   height: 10rem;
 
@@ -499,7 +395,6 @@ h2 {
 
 /* TO-DO List Scrollbar */
 .todo-list::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: var(--color-white);
@@ -513,7 +408,6 @@ h2 {
 
 .todo-list::-webkit-scrollbar-thumb {
   border-radius: 1rem;
-  -webkit-box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
   background-color: var(--color-primary);
 }
@@ -529,19 +423,6 @@ body:before {
   left: 0;
   width: 100%;
   height: 100%;
-
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--color-linear-gradient-6)),
-    to(var(--color-primary))
-  );
-
-  background: -o-linear-gradient(
-    var(--color-linear-gradient-6),
-    var(--color-primary)
-  );
 
   background: linear-gradient(
     var(--color-linear-gradient-6),
@@ -562,19 +443,6 @@ body:after {
   left: 0;
   width: 100%;
   height: 100%;
-
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--color-linear-gradient-6)),
-    to(var(--color-primary))
-  );
-
-  background: -o-linear-gradient(
-    var(--color-linear-gradient-6),
-    var(--color-primary)
-  );
 
   background: linear-gradient(
     var(--color-linear-gradient-6),
