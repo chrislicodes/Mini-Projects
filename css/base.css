@@ -1,0 +1,143 @@
+/* Variables */
+:root {
+  --color-primary: #e92052e6;
+  --color-primary-hover: #e9205299;
+
+  --color-white: #fafafa;
+  --color-grey-light: #f7f7f7;
+  --color-grey-dark: #a5a5a5;
+  --color-black: #141414;
+
+  --color-category: #154cb3;
+  --color-green-button: #19ac20;
+  --color-red-button: #ec3f3f;
+
+  --color-linear-gradient-1: #91eae4;
+  --color-linear-gradient-2: #86a8e7;
+  --color-linear-gradient-3: #7f7fd5;
+
+  --color-linear-gradient-4: #ff0000e6;
+  --color-linear-gradient-5: #db00dbe6;
+
+  --color-linear-gradient-6: #2094f3e6;
+}
+
+/* Responsive Font Size */
+html {
+  font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
+  font-weight: 400;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+/* ---------> Setup  */
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    to right bottom,
+    var(--color-linear-gradient-1),
+    var(--color-linear-gradient-2),
+    var(--color-linear-gradient-3)
+  );
+}
+
+/* ----------------------------------------------
+--------- Background Circles
+------------------------------------------------- */
+body:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    var(--color-linear-gradient-6),
+    var(--color-primary)
+  );
+
+  -webkit-clip-path: circle(15rem at 60% 85%);
+  clip-path: circle(15rem at 60% 85%);
+
+  z-index: -1;
+}
+
+body:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    var(--color-linear-gradient-6),
+    var(--color-primary)
+  );
+
+  -webkit-clip-path: circle(15rem at 40% 30%);
+  clip-path: circle(15rem at 40% 30%);
+
+  z-index: -1;
+}
+
+/* ----------------------------------------------
+  --------- General Heading
+  ------------------------------------------------- */
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-white);
+  text-transform: uppercase;
+
+  margin: 3rem;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+/* ----------------------------------------------
+--------- Media Queries
+------------------------------------------------- */
+
+@media (max-width: 580px), (max-height: 890px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 510px), (max-height: 780px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 470px), (max-height: 700px) {
+  header {
+    display: none;
+  }
+
+  body {
+    padding-top: 3rem;
+  }
+}

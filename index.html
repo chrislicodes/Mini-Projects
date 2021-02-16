@@ -13,6 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/todo.css">
 </head>
 
 <body>
@@ -20,10 +24,11 @@
         <h1>Minimal ToDo - List</h1>
         <h2>Getting things done - one line at a time</h2>
     </header>
-    <main>
-        <form name="input-form" enctype="multipart/form-data">
-            <input type="text" name="description" placeholder="The next thing I have to do is .." required="required">
-            <input type="date" name="date" max="2099-12-31" required="required">
+    <main class="todo-app">
+        <form name="input-form" enctype="multipart/form-data" class="input-form">
+            <input type="text" name="description" placeholder="The next thing I have to do is .." required="required"
+                class="input-form__description">
+            <input type="date" name="date" max="2099-12-31" value="2021-02-01" required="required">
             <input type="time" name="time" value="13:30" required="required">
             <select name="category" id="category">
                 <option value="coding">Coding</option>
@@ -31,44 +36,221 @@
                 <option value="household">Household</option>
             </select>
 
-            <button type="submit">Add Task :&#41;</button>
-
+            <button type="submit" class="submit-btn">Add Task :&#41;</button>
         </form>
-        <ol>
-            <li>
-                <article>
-                    <svg>
-                        <use xlink:href="./img/sprites.svg#coding"></use>
-                    </svg>
+        <ol class="todo-list">
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#finance"></use>
+                        </svg>
+                    </div>
 
-                    <h3>Finish Issue #5</h3>
-                    <time datetime="2021-01-27T20:30:00Z">27.01.21 - 20:30</time>
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
 
-                    <button type="submit" data-tag="complete">
+                    <button type="submit" data-tag="complete" class="btn-complete">
                         <svg>
                             <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
                         </svg>
                     </button>
-                    <button type="submit" data-tag="delete">
+                    <button type="submit" data-tag="delete" class="btn-delete">
                         <svg>
                             <use xlink:href="./img/sprites.svg#icon-cross"></use>
                         </svg>
                     </button>
                 </article>
             </li>
-            <li>
-                <article>
-                    <svg>
-                        <use xlink:href="./img/sprites.svg#finance"></use>
-                    </svg>
-                    <h3>Create a budget for 2021</h3>
-                    <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
-                    <button type="submit" data-tag="complete">
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#coding"></use>
+                        </svg>
+                    </div>
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+                    <button type="submit" data-tag="complete" class="btn-complete">
                         <svg>
                             <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
                         </svg>
                     </button>
-                    <button type="submit" data-tag="delete">
+                    <button type="submit" data-tag="delete" class="btn-delete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                        </svg>
+                    </button>
+                </article>
+            </li>
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#household"></use>
+                        </svg>
+                    </div>
+
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+
+                    <button type="submit" data-tag="complete" class="btn-complete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                    <button type="submit" data-tag="delete" class="btn-delete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                        </svg>
+                    </button>
+                </article>
+            </li>
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#finance"></use>
+                        </svg>
+                    </div>
+
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+
+                    <button type="submit" data-tag="complete" class="btn-complete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                    <button type="submit" data-tag="delete" class="btn-delete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                        </svg>
+                    </button>
+                </article>
+            </li>
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#coding"></use>
+                        </svg>
+                    </div>
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+                    <button type="submit" data-tag="complete" class="btn-complete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                    <button type="submit" data-tag="delete" class="btn-delete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                        </svg>
+                    </button>
+                </article>
+            </li>
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#household"></use>
+                        </svg>
+                    </div>
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+
+                    <button type="submit" data-tag="complete" class="btn-complete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                    <button type="submit" data-tag="delete" class="btn-delete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                        </svg>
+                    </button>
+                </article>
+            </li>
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#finance"></use>
+                        </svg>
+                    </div>
+
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+
+                    <button type="submit" data-tag="complete" class="btn-complete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                    <button type="submit" data-tag="delete" class="btn-delete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                        </svg>
+                    </button>
+                </article>
+            </li>
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#coding"></use>
+                        </svg>
+                    </div>
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+                    <button type="submit" data-tag="complete" class="btn-complete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                    <button type="submit" data-tag="delete" class="btn-delete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-cross"></use>
+                        </svg>
+                    </button>
+                </article>
+            </li>
+            <li class="todo-list-item">
+                <article class="todo-list-item-content">
+                    <div class="icon-container">
+                        <svg class="todo-icon">
+                            <use xlink:href="./img/sprites.svg#household"></use>
+                        </svg>
+                    </div>
+
+                    <div class="todo-description">
+                        <h3>Create a budget for 2021</h3>
+                        <time datetime="2021-01-28T19:00:00Z">28.01.21 - 19:00</time>
+                    </div>
+
+                    <button type="submit" data-tag="complete" class="btn-complete">
+                        <svg>
+                            <use xlink:href="./img/sprites.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                    <button type="submit" data-tag="delete" class="btn-delete">
                         <svg>
                             <use xlink:href="./img/sprites.svg#icon-cross"></use>
                         </svg>
@@ -76,7 +258,7 @@
                 </article>
             </li>
         </ol>
-        <form name="filter-form" enctype="multipart/form-data">
+        <form name="filter-form" enctype="multipart/form-data" class="filter-form">
             <p>Status:</p>
             <input type="checkbox" id="task-open">
             <label for="task-open">Open</label>
