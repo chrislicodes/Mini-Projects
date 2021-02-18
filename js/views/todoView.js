@@ -25,10 +25,10 @@ class TodoView {
      * generates the markup to render the todo
      * @param todoObj {Todo} - todo - Object created with Todo class
      */
-    let { id, category, description, date } = todoObj;
+    let { id, category, description, dateToComplete } = todoObj;
 
-    const dateFormat = formatDate(date);
-    const timeFormat = formatTime(date);
+    const dateFormat = formatDate(dateToComplete);
+    const timeFormat = formatTime(dateToComplete);
 
     return `
     <li class="todo-list-item" data-id=${id}>
@@ -41,7 +41,7 @@ class TodoView {
 
           <div class="todo-description">
               <h3>${description}</h3>
-              <time datetime="2021-01-28T19:00:00Z">${dateFormat} - ${timeFormat}</time>
+              <time datetime="${dateToComplete}">${dateFormat} - ${timeFormat}</time>
           </div>
 
           <button type="submit" data-tag="complete" class="btn-complete">
@@ -70,6 +70,8 @@ class TodoView {
 
       //clean input Form
       this._inputText.value = "";
+
+      console.log(data);
 
       //pass data to controller
       handler(data);

@@ -17,5 +17,4 @@ const formatTime = function (date) {
   return timeFormat;
 };
 
-const formatToValidDateString = (date, time) =>
-  new Date(date + "T" + time + ":00Z");
+const formatToValidDateString = (date, time) => new Date(date + "T" + time);
