@@ -1,3 +1,8 @@
+const Categories = Object.freeze({
+  household: "household",
+  coding: "coding",
+  finance: "finance",
+});
 class Todo {
   /**
    * Represents a single Todo
