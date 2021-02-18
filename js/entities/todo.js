@@ -1,14 +1,18 @@
+const Categories = Object.freeze({
+  household: "household",
+  coding: "coding",
+  finance: "finance",
+});
 class Todo {
   /**
    * Represents a single Todo
    * @param description {string} - description of the todo
-   * @param date {Date} - date the todo must be completed
-   * @param category {string} - category of the todo
+   * @param dateToComplete {Date} - date the todo must be completed
+   * @param {("coding" | "finance" | "household")} category {string} - category of the todo
    */
-
-  constructor(description, date, category) {
+  constructor(description, dateToComplete, category) {
     this.description = description;
-    this.date = date;
+    this.dateToComplete = dateToComplete;
     this.category = category;
 
     this.id = new Date().getTime();
