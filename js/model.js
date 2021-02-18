@@ -3,14 +3,14 @@ class Model {
     todos: [],
   };
 
-  addTodo(description, date, category) {
+  addTodo(description, dateToComplete, category) {
     /**
      * Adds a todo to the state of the model
      * @param description {string} - description of the todo
-     * @param date {Date} - date the todo must be completed
+     * @param dateToComplete {Date} - date the todo must be completed
      * @param category {string} - category of the todo
      */
-    const todo = new Todo(description, date, category);
+    const todo = new Todo(description, dateToComplete, category);
     const newTodos = [todo, ...this.#state.todos];
     this.#state.todos = newTodos;
   }
