@@ -76,5 +76,3 @@ class TodoView {
     });
   }
 }
-
-const todoView = new TodoView();

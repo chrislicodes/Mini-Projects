@@ -1,19 +1,38 @@
-//Event Handlers
-const processInput = function (data) {
-  //Add todo to model
-  model.addTodo(
-    data.description,
-    formatToValidDateString(data.date, data.time),
-    data.category
-  );
+class Controller {
+  constructor() {
+    this.validator = new Validator();
+    this.todoView = new TodoView();
+    this.model = new Model();
 
-  //clear todo view
-  todoView.clearView();
+    //Publisher Subscriber Pattern
+    this.todoView.addSubmitHandler(this.processInput);
+  }
 
-  //rerender the todo state
-  const todos = model.returnTodoData();
-  todos.forEach((todo) => todoView.render(todo));
-};
+  //Event Handlers
+  processInput = (data) => {
+    const { description, date, time, category } = data;
 
-//Publisher Subscriber Pattern
-todoView.addSubmitHandler(processInput);
+    try {
+      //validate data
+      this.validator.validateInputFormData(description, category);
+
+      //Add todo to model
+      this.model.addTodo(
+        description,
+        formatToValidDateString(date, time),
+        category
+      );
+
+      //clear todo view
+      this.todoView.clearView();
+
+      //rerender the todo state
+      const todos = this.model.returnTodoData();
+      todos.forEach((todo) => this.todoView.render(todo));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+}
+
+const app = new Controller();
