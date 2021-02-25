@@ -17,4 +17,13 @@ describe("Entities Test Suite", () => {
     todo.completeTask();
     expect(todo.completed).toBeTruthy();
   });
+
+  test("should incomplete a Todo Entity", () => {
+    const now = new Date();
+    const todo = new Todo("My new todo", now, "coding");
+    todo.completeTask();
+
+    todo.incompleteTask();
+    expect(todo.completed).toBeFalsy();
+  });
 });
