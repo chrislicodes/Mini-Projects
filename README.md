@@ -2,7 +2,7 @@
 
 A simple web app written in HTML5, CSS3 and JS (ES6+).
 
-## Requierements
+## Requirements
 
 - Node.js
 - NPM
