@@ -3,6 +3,7 @@ const Categories = Object.freeze({
   coding: "coding",
   finance: "finance",
 });
+
 class Todo {
   /**
    * Represents a single Todo
@@ -27,3 +28,8 @@ class Todo {
     this.completed = false;
   }
 }
+
+module.exports = {
+  Categories,
+  Todo
+};
