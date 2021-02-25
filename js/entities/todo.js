@@ -21,9 +21,13 @@ class Todo {
 
   completeTask() {
     this.completed = true;
+
+    return this;
   }
 
   incompleteTask() {
     this.completed = false;
+
+    return this;
   }
 }

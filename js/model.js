@@ -21,12 +21,7 @@ class Model {
      * deletes a todo from the state of the model
      * @param todoID {String} - ID of the todo to be deleted *
      */
-    const newState = [...this.#state.todos];
-    const todoIndex = newState.findIndex((todoObj) => todoObj.id === todoID);
-
-    newState.splice(todoIndex, 1);
-
-    this.#state.todos = newState;
+    this.#state.todos = this.#state.todos.filter((todo) => todo.id !== todoID);
   }
 
   completeTodo(todoID) {
@@ -34,12 +29,9 @@ class Model {
      * marks a todo as completed
      * @param todoID {String} - ID of the todo to be completed*
      */
-    const newState = [...this.#state.todos];
-    const todoObj = newState.find((todo) => todo.id === todoID);
-
-    todoObj.completeTask();
-
-    this.#state.todos = newState;
+    this.#state.todos = this.#state.todos.map((todo) =>
+      todo.id === todoID ? todo.completeTask() : todo
+    );
   }
 
   incompleteTodo(todoID) {
@@ -47,12 +39,9 @@ class Model {
      * set completed status of a todo to false
      * @param todoID {String} - ID of the todo to remove the completed status
      */
-    const newState = [...this.#state.todos];
-    const todoObj = newState.find((todo) => todo.id === todoID);
-
-    todoObj.incompleteTask();
-
-    this.#state.todos = newState;
+    this.#state.todos = this.#state.todos.map((todo) =>
+      todo.id === todoID ? todo.incompleteTask() : todo
+    );
   }
 
   returnTodoData() {
