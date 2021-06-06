@@ -38,6 +38,7 @@ body {
   min-height: 0;
   gap: 1rem;
   padding: 0.75rem;
+
   &__header {
     display: flex;
     flex-direction: column;
@@ -53,6 +54,7 @@ body {
       }
     }
   }
+
   &__cards {
     display: flex;
     flex-direction: column;
