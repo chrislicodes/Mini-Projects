@@ -1,3 +1,26 @@
+:root {
+  --color-white: #fefefe;
+
+  --color-primary-dark: #46a579;
+  --color-primary: #6bd3a3;
+  --color-primary-light: #d8f3dc;
+  --color-primary-grey: #f2f7f3;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #e5eee5;
+  --color-grey-dark-1: #424242;
+
+  --color-red-inactive: #ff6b6b;
+  --color-red-active: #ff2222;
+
+  --main-animation-time: 1.3s;
+  --sub-animation-time: 0.6s;
+  --delay-animation: 0.6s;
+  --delay-animation-offset: 0s;
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -38,6 +61,9 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: var(--color-grey-light-12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 /* A elements that don't have a class get default styles */

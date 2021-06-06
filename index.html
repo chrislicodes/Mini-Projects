@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,18 +9,199 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-
     <link rel="stylesheet" href="./src/sass/main.scss">
     <script src="./src/app.ts" defer></script>
 </head>
 
 <body>
-    <header>Welcome to this Todo List</header>
-    <main></main>
-    <footer></footer>
+    <header class="header">
+        <h1 class="header__title">Task Planner</h1>
+    </header>
+    <main class="container-grid">
+        <section class="task-container">
+            <header class="task-container__header">
+                <div class="container-info">
+                    <h2 class="task-headline">To do</h2>
+                    <div class="task-count">4</div>
+                </div>
+                <button class="btn-add">+</button>
+            </header>
+            <div class="task-container__cards">
+                <article class="card-item">
+                    <div class="card-item__header">
+                        <h3 class="card-item__title">Card - Header</h3>
+                        <div class="card-item__buttons">
+                            <button type="submit" data-tag="complete" class="btn-complete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button type="submit" data-tag="delete" class="btn-delete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="card-item__description">Voluptate ex proident magna ipsum dolor labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum. Voluptate ex proident magna ipsum dolor
+                        labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum.</p>
+                </article>
+                <article class="card-item">
+                    <div class="card-item__header">
+                        <h3 class="card-item__title">Card - Header</h3>
+                        <div class="card-item__buttons">
+                            <button type="submit" data-tag="complete" class="btn-complete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button type="submit" data-tag="delete" class="btn-delete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="card-item__description">Voluptate ex proident magna ipsum dolor labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum.</p>
+                </article>
+                <article class="card-item">
+                    <div class="card-item__header">
+                        <h3 class="card-item__title">Card - Header</h3>
+                        <div class="card-item__buttons">
+                            <button type="submit" data-tag="complete" class="btn-complete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button type="submit" data-tag="delete" class="btn-delete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="card-item__description">Voluptate ex proident magna ipsum dolor labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum.</p>
+                </article>
+                <article class="card-item">
+                    <div class="card-item__header">
+                        <h3 class="card-item__title">Card - Header</h3>
+                        <div class="card-item__buttons">
+                            <button type="submit" data-tag="complete" class="btn-complete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button type="submit" data-tag="delete" class="btn-delete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="card-item__description">Voluptate ex proident magna ipsum dolor labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum.</p>
+                </article>
+            </div>
+        </section>
+        <section class="task-container">
+            <header class="task-container__header">
+                <div class="container-info">
+                    <h2 class="task-headline">In Progress</h2>
+                    <div class="task-count">2</div>
+                </div>
+                <button class="btn-add">+</button>
+            </header>
+            <div class="task-container__cards">
+                <article class="card-item">
+                    <div class="card-item__header">
+                        <h3 class="card-item__title">Card - Header</h3>
+                        <div class="card-item__buttons">
+                            <button type="submit" data-tag="complete" class="btn-complete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button type="submit" data-tag="delete" class="btn-delete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="card-item__description">Voluptate ex proident magna ipsum dolor labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum.</p>
+                </article>
+                <article class="card-item">
+                    <div class="card-item__header">
+                        <h3 class="card-item__title">Card - Header</h3>
+                        <div class="card-item__buttons">
+                            <button type="submit" data-tag="complete" class="btn-complete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-checkmark"></use>
+                                </svg>
+                            </button>
+                            <button type="submit" data-tag="delete" class="btn-delete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="card-item__description">Voluptate ex proident magna ipsum dolor labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum.</p>
+                </article>
+            </div>
+        </section>
+        <section class="task-container">
+            <header class="task-container__header">
+                <div class="container-info">
+                    <h2 class="task-headline">Completed</h2>
+                    <div class="task-count">1</div>
+                </div>
+                <button class="btn-add">+</button>
+            </header>
+            <div class="task-container__cards">
+                <article class="card-item">
+                    <div class="card-item__header">
+                        <h3 class="card-item__title">Card - Header</h3>
+                        <div class="card-item__buttons">
+                            <button type="submit" data-tag="delete" class="btn-delete">
+                                <svg>
+                                    <use xlink:href="./src/img/sprites.svg#icon-cross"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="card-item__description">Voluptate ex proident magna ipsum dolor labore aliqua cillum culpa
+                        minim. Laborum laborum
+                        ullamco
+                        nulla esse sit. Ad eiusmod est laborum qui cillum.</p>
+                </article>
+            </div>
+        </section>
+        <section class="task-container"></section>
+        <section class="task-container"></section>
+    </main>
+    <footer class="footer">Made with <span class="heart">❤</span> by <a
+            href="https://github.com/chrislicodes/vanilla-todo-list" class="link">chrislicodes.</a></footer>
 </body>
 
 </html>

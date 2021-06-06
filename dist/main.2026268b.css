@@ -1,3 +1,22 @@
+:root {
+  --color-white: #fefefe;
+  --color-primary-dark: #46a579;
+  --color-primary: #6bd3a3;
+  --color-primary-light: #d8f3dc;
+  --color-primary-grey: #f2f7f3;
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #e5eee5;
+  --color-grey-dark-1: #424242;
+  --color-red-inactive: #ff6b6b;
+  --color-red-active: #ff2222;
+  --main-animation-time: 1.3s;
+  --sub-animation-time: 0.6s;
+  --delay-animation: 0.6s;
+  --delay-animation-offset: 0s;
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -38,6 +57,8 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: var(--color-grey-light-12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 /* A elements that don't have a class get default styles */
@@ -74,6 +95,184 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body > * {
+  width: 90%;
+}
+
+.header {
+  height: 10rem;
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+.header__title {
+  font-weight: 600;
+  font-size: 1.8rem;
+  padding-bottom: 1rem;
+}
+
+.container-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 1rem;
+  padding: 0.75rem;
+}
+.task-container__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.task-container__header .container-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-container__header .container-info > * {
+  height: 100%;
+}
+.task-container__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  gap: 5px;
+}
+
+.task-container {
+  background-color: var(--color-primary-grey);
+  border-radius: 15px;
+}
+.task-container__cards::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: var(--color-white);
+}
+.task-container__cards::-webkit-scrollbar {
+  width: 0.4rem;
+  border-radius: 1rem;
+  background-color: var(--color-white);
+}
+.task-container__cards::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
+  background-color: var(--color-primary);
+}
+
+.task-headline {
+  font-weight: 600;
+}
+
+.task-count {
+  color: var(--color-primary-dark);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 2rem;
+  border-radius: 7px;
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-grey-light-4);
+  font-size: 1.75rem;
+  color: var(--color-primary-dark);
+  font-weight: 500;
+  padding-bottom: 8px;
+  transition: all 0.2s;
+}
+.btn-add:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.card-item {
+  padding: 1rem;
+  margin-right: 0.5rem;
+  background-color: var(--color-white);
+  border-radius: 15px;
+  border: 1px solid var(--color-grey-light-4);
+  transition: all 0.2s;
+  cursor: grab;
+}
+.card-item__header {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-item__description {
+  color: var(--color-grey-dark-1);
+}
+.card-item:hover {
+  border-color: var(--color-primary-dark);
+}
+
+.card-item__buttons button {
+  background-color: unset;
+  outline: unset;
+  border: 0;
+  cursor: pointer;
+}
+.card-item__buttons button svg {
+  height: 1rem;
+  width: 1rem;
+  transition: all 0.2s;
+}
+.card-item__buttons .btn-complete:hover > svg {
+  fill: var(--color-primary-dark);
+}
+.card-item__buttons .btn-complete svg {
+  fill: var(--color-primary);
+  height: 1.2rem;
+  width: 1.2rem;
+}
+.card-item__buttons .btn-delete:hover > svg {
+  fill: var(--color-red-active);
+}
+.card-item__buttons .btn-delete svg {
+  fill: var(--color-red-inactive);
+  height: 1rem;
+  width: 1rem;
+}
+
+.heart {
+  color: red;
+}
+
+.link {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=/main.2026268b.css.map */
