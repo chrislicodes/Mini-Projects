@@ -1,3 +1,5 @@
+import { generateID } from "../utils/utils.js";
+
 export default class Todo {
   /**
    * Represents a single Todo
@@ -6,7 +8,7 @@ export default class Todo {
    * @param category {string} - category of the todo
    * @param currentBucketPos {number} - current bucket position
    */
-  readonly id = new Date().getTime();
+  readonly id: string = generateID();
   private readonly dateOfCreation: Date = new Date();
   completed = false;
 

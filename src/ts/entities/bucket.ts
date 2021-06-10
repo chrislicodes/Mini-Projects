@@ -1,7 +1,8 @@
 import Todo from "./todo";
+import { generateID } from "../utils/utils.js";
 
 export default class Bucket {
-  readonly id = new Date().getTime();
+  readonly id: string = generateID();
   items: Todo[] = [];
 
   constructor(public title: string = "New Bucket") {
@@ -12,7 +13,7 @@ export default class Bucket {
     this.items = [...this.items, todo];
   }
 
-  deleteItemFromBucket(id: number) {
+  removeItemFromBucket(id: string) {
     this.items = this.items.filter((todo) => todo.id !== id);
   }
 }
