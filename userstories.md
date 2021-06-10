@@ -1,0 +1,9 @@
+- as a user I can create buckets for todos
+- as a user I can delete buckets for todos
+- as a user I can reorder the buckets
+- as a user I can add todos to my buckets
+- as a user I can delete todos from my bucket
+- as a user I can reorder my todo items inside the bucket
+- as a user I can edit the title and text of a todo after creation
+- as a user I can edit the name of the bucket after creation
+- as a user I can close the browser and find the same view after reload
