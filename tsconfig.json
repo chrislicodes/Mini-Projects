@@ -2,6 +2,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
+    "target": "es6",
     "paths": {
       "~*": ["./*"]
     }
