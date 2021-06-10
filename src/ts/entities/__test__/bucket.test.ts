@@ -7,7 +7,7 @@ describe("Bucket Test", () => {
 
     expect(bucket.title).toBe("New Bucket");
     expect(bucket.items).toEqual([]);
-    expect(bucket.id).toBeGreaterThan(0);
+    expect(bucket.id).toBeDefined();
   });
 
   it("should add todo entity to bucket", () => {
@@ -24,7 +24,7 @@ describe("Bucket Test", () => {
     bucket.addItemToBucket(new Todo("", ""));
     const id = bucket.items[0].id;
 
-    bucket.deleteItemFromBucket(id);
+    bucket.removeItemFromBucket(id);
     expect(bucket.items).toEqual([]);
   });
 });
