@@ -1,8 +1,8 @@
 import Todo from "../todo";
 
 describe("Todo Entity", () => {
-  it("should create an empty Todo object", () => {
-    const todo = new Todo("");
+  it("should create a Todo object", () => {
+    const todo = new Todo("", "New Todo", "Todo Description");
 
     expect(todo.title).toBe("New Todo");
     expect(todo.description).toBe("Todo Description");
@@ -11,23 +11,17 @@ describe("Todo Entity", () => {
     expect(todo).toBeInstanceOf(Todo);
   });
 
-  it("should create a complete Todo object", () => {
-    const todo = new Todo("coding", "Title", "Description");
+  it("should change the todo title", () => {
+    const todo = new Todo("", "New Todo", "Todo Description");
+    todo.changeTodoTitle("changed title");
 
-    expect(todo.title).toBe("Title");
-    expect(todo.description).toBe("Description");
-    expect(todo.category).toBe("coding");
+    expect(todo.title).toBe("changed title");
   });
 
-  it("should complete and incomplete the todo entity", () => {
-    const todo = new Todo("Title", "Description", "coding");
+  it("should change the todo description", () => {
+    const todo = new Todo("", "New Todo", "Todo Description");
+    todo.changeTodoDescription("changed description");
 
-    expect(todo.completed).toBeFalsy();
-
-    todo.completeTask();
-    expect(todo.completed).toBeTruthy();
-
-    todo.incompleteTask();
-    expect(todo.completed).toBeFalsy();
+    expect(todo.description).toBe("changed description");
   });
 });

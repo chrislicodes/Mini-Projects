@@ -1,4 +1,4 @@
-import { generateID } from "../utils/utils.js";
+import { generateID } from "../utils/utils";
 
 export default class Todo {
   /**
@@ -6,27 +6,25 @@ export default class Todo {
    * @param title {string} - title of the todo
    * @param description {string} - description of the todo
    * @param category {string} - category of the todo
-   * @param currentBucketPos {number} - current bucket position
    */
   readonly id: string = generateID();
-  private readonly dateOfCreation: Date = new Date();
-  completed = false;
+  readonly dateOfCreation: Date = new Date();
 
   constructor(
     public category: string,
-    public title: string = "New Todo",
-    public description: string = "Todo Description"
+    public title: string,
+    public description: string
   ) {
     this.title = title;
     this.description = description;
     this.category = category;
   }
 
-  completeTask(this: Todo): void {
-    this.completed = true;
+  changeTodoTitle(this: Todo, newTitle: string): void {
+    this.title = newTitle;
   }
 
-  incompleteTask(this: Todo): void {
-    this.completed = false;
+  changeTodoDescription(this: Todo, newDescription: string): void {
+    this.description = newDescription;
   }
 }
