@@ -431,7 +431,7 @@ var Model = /*#__PURE__*/function () {
 exports.default = Model;
 _Model_state = new WeakMap();
 },{"../entities/todo":"C3zP","../entities/bucket":"auz1"}],"Yav5":[function(require,module,exports) {
-module.exports = "/sprites.31745931.svg";
+module.exports = "sprites.31745931.svg";
 },{}],"EaOZ":[function(require,module,exports) {
 "use strict";
 
@@ -947,4 +947,4 @@ var controller_1 = __importDefault(require("./ts/components/controller"));
 var controller = new controller_1.default();
 controller.init();
 },{"./ts/components/controller":"jVKl"}]},{},["YSF2"], null)
-//# sourceMappingURL=/app.d700c39a.js.map
+//# sourceMappingURL=app.d700c39a.js.map
