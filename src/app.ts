@@ -1,3 +1,4 @@
 import Controller from "./ts/components/controller";
 
-const model = new Controller();
+const controller = new Controller();
+controller.init();
