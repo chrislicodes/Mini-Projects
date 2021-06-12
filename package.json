@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "build": "parcel build index.html --out-dir build/ --no-minify"
+    "build": "parcel build index.html --out-dir build/ --no-minify",
+    "deploy": "npm run build && git add build && git commit -m \"build\" && git subtree push --prefix build origin gh-pages"
   },
   "repository": {
     "type": "git",
