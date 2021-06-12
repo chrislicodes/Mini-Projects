@@ -1,8 +1,84 @@
+.header__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+
+  & svg {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.container-grid {
+  padding-bottom: 0.75rem;
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.2rem rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: var(--color-white);
+  }
+
+  &::-webkit-scrollbar {
+    height: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--color-white);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0.3rem rgba(0, 0, 0, 0.3);
+    background-color: var(--color-primary-light);
+  }
+
+  &__add-container {
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.2s;
+
+    & > * {
+      transition: all 0.2s;
+    }
+
+    & p {
+      color: var(--color-primary);
+      font-weight: 500;
+      font-size: 1.15rem;
+    }
+
+    & svg {
+      fill: var(--color-primary);
+      height: 5rem;
+      width: 5rem;
+      margin-bottom: 1rem;
+    }
+
+    &:hover {
+      & svg {
+        fill: var(--color-white);
+      }
+
+      & p {
+        color: var(--color-white);
+      }
+
+      background-color: var(--color-primary);
+    }
+  }
+}
+
 .task-container {
   background-color: var(--color-primary-grey);
   border-radius: 15px;
 
   &__cards {
+    transition: all 0.2s;
+    &-entered {
+      background-color: var(--color-primary-light);
+    }
+    padding-bottom: 7rem;
     &::-webkit-scrollbar-track {
       box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
       border-radius: 10px;
@@ -25,6 +101,11 @@
 
 .task-headline {
   font-weight: 600;
+  width: 90%;
+
+  &:focus {
+    background-color: white;
+  }
 }
 
 .task-count {
@@ -77,6 +158,13 @@
 
   &__description {
     color: var(--color-grey-dark-1);
+    cursor: auto;
+    width: 90%;
+  }
+
+  &__title {
+    min-width: 70%;
+    cursor: auto;
   }
 
   &:hover {
@@ -98,19 +186,8 @@
     }
   }
 
-  & .btn-complete {
-    &:hover > svg {
-      fill: var(--color-primary-dark);
-    }
-
-    & svg {
-      fill: var(--color-primary);
-      height: 1.2rem;
-      width: 1.2rem;
-    }
-  }
-
   & .btn-delete {
+    z-index: 10;
     &:hover > svg {
       fill: var(--color-red-active);
     }
