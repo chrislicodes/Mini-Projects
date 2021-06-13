@@ -31,7 +31,8 @@ export default class Controller {
 
   addNewBucket(this: Controller): void {
     const newBucket = this.#model.addBucket();
-    this.#view.render(newBucket);
+    this._renderBuckets();
+    // this.#view.render(newBucket);
   }
 
   addNewTodoToBucket(this: Controller, bucketID: string): void {

@@ -15,7 +15,7 @@ export default class BucketView {
 
     const markup = this._generateMarkup(bucketObj);
 
-    this.#parent.insertAdjacentHTML("afterbegin", markup);
+    this.#parent.insertAdjacentHTML("afterend", markup);
   }
 
   _generateMarkup(bucketObj: Bucket): string {
