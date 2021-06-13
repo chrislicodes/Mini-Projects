@@ -15,7 +15,7 @@ export default class BucketView {
 
     const markup = this._generateMarkup(bucketObj);
 
-    this.#parent.insertAdjacentHTML("afterend", markup);
+    this.#parent.insertAdjacentHTML("beforeend", markup);
   }
 
   _generateMarkup(bucketObj: Bucket): string {
@@ -48,13 +48,19 @@ export default class BucketView {
     /**
      * clears view
      */
-    this.#parent.innerHTML = `
-     <button class="container-grid__add-container">
+    this.#parent.innerHTML = ``;
+  }
+
+  renderAddBucketButton(): void {
+    const markup = `
+    <button class="container-grid__add-container">
         <svg>
             <use xlink:href="${icons}#icon-plus"></use>
         </svg>
         <p>Add Task - Bucket</p>
     </button>`;
+
+    this.#parent.insertAdjacentHTML("beforeend", markup);
   }
 
   addBucketClickHandler(handler: Function) {

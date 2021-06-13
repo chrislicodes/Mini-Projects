@@ -27,6 +27,7 @@ export default class Controller {
   _renderBuckets(this: Controller): void {
     this.#view.clear();
     this.#model.buckets.forEach((bucket) => this.#view.render(bucket));
+    this.#view.renderAddBucketButton();
   }
 
   addNewBucket(this: Controller): void {
