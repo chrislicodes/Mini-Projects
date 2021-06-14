@@ -117,20 +117,20 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"fkXL":[function(require,module,exports) {
+})({"wmpl":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.generateID = void 0;
+exports.generateUUID = void 0;
 
-var generateID = function generateID() {
+var generateUUID = function generateUUID() {
   return "_" + Math.random().toString(36).substr(2, 9);
 };
 
-exports.generateID = generateID;
-},{}],"C3zP":[function(require,module,exports) {
+exports.generateUUID = generateUUID;
+},{}],"yAM0":[function(require,module,exports) {
 "use strict";
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -139,50 +139,90 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var __classPrivateFieldSet = this && this.__classPrivateFieldSet || function (receiver, state, value, kind, f) {
+  if (kind === "m") throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+};
+
+var __classPrivateFieldGet = this && this.__classPrivateFieldGet || function (receiver, state, kind, f) {
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+
+var _Todo_uuid, _Todo_title, _Todo_description;
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Todo = void 0;
 
-var utils_1 = require("../utils/utils");
+var generateUUID_1 = require("./generateUUID");
 
 var Todo = /*#__PURE__*/function () {
-  function Todo(category, title, description) {
+  function Todo(title, description) {
+    var uuid = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : generateUUID_1.generateUUID();
+
     _classCallCheck(this, Todo);
 
-    this.category = category;
-    this.title = title;
-    this.description = description;
     /**
      * Represents a single Todo
      * @param title {string} - title of the todo
      * @param description {string} - description of the todo
-     * @param category {string} - category of the todo
      */
+    _Todo_uuid.set(this, void 0);
 
-    this.id = utils_1.generateID();
-    this.dateOfCreation = new Date();
-    this.title = title;
-    this.description = description;
-    this.category = category;
+    _Todo_title.set(this, void 0);
+
+    _Todo_description.set(this, void 0);
+
+    __classPrivateFieldSet(this, _Todo_title, title, "f");
+
+    __classPrivateFieldSet(this, _Todo_description, description, "f");
+
+    __classPrivateFieldSet(this, _Todo_uuid, uuid, "f");
   }
 
   _createClass(Todo, [{
-    key: "changeTodoTitle",
-    value: function changeTodoTitle(newTitle) {
-      this.title = newTitle;
+    key: "toJSON",
+    value: function toJSON() {
+      return {
+        uuid: __classPrivateFieldGet(this, _Todo_uuid, "f"),
+        title: __classPrivateFieldGet(this, _Todo_title, "f"),
+        description: __classPrivateFieldGet(this, _Todo_description, "f")
+      };
     }
   }, {
-    key: "changeTodoDescription",
-    value: function changeTodoDescription(newDescription) {
-      this.description = newDescription;
+    key: "title",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Todo_title, "f");
+    },
+    set: function set(newTitle) {
+      __classPrivateFieldSet(this, _Todo_title, newTitle, "f");
+    }
+  }, {
+    key: "uuid",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Todo_uuid, "f");
+    }
+  }, {
+    key: "description",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Todo_description, "f");
+    },
+    set: function set(newDescription) {
+      __classPrivateFieldSet(this, _Todo_description, newDescription, "f");
     }
   }]);
 
   return Todo;
 }();
 
-exports.default = Todo;
-},{"../utils/utils":"fkXL"}],"auz1":[function(require,module,exports) {
+exports.Todo = Todo;
+_Todo_uuid = new WeakMap(), _Todo_title = new WeakMap(), _Todo_description = new WeakMap();
+},{"./generateUUID":"wmpl"}],"Ez5f":[function(require,module,exports) {
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -203,51 +243,99 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var __classPrivateFieldSet = this && this.__classPrivateFieldSet || function (receiver, state, value, kind, f) {
+  if (kind === "m") throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+};
+
+var __classPrivateFieldGet = this && this.__classPrivateFieldGet || function (receiver, state, kind, f) {
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+
+var _Bucket_uuid, _Bucket_category, _Bucket_items;
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Bucket = void 0;
 
-var utils_1 = require("../utils/utils");
+var generateUUID_1 = require("./generateUUID");
 
 var Bucket = /*#__PURE__*/function () {
-  function Bucket(title) {
+  function Bucket(category) {
     var items = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+    var uuid = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : generateUUID_1.generateUUID();
 
     _classCallCheck(this, Bucket);
 
-    this.title = title;
-    this.id = utils_1.generateID();
-    this.items = [];
-    this.title = title;
-    this.items = items;
+    _Bucket_uuid.set(this, void 0);
+
+    _Bucket_category.set(this, void 0);
+
+    _Bucket_items.set(this, void 0);
+
+    __classPrivateFieldSet(this, _Bucket_category, category, "f");
+
+    __classPrivateFieldSet(this, _Bucket_items, items, "f");
+
+    __classPrivateFieldSet(this, _Bucket_uuid, uuid, "f");
   }
 
   _createClass(Bucket, [{
     key: "addItemToBucket",
     value: function addItemToBucket(todo) {
-      var toEnd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      if (toEnd) this.items = [].concat(_toConsumableArray(this.items), [todo]);
-      if (!toEnd) this.items = [todo].concat(_toConsumableArray(this.items));
+      var toFront = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      if (!toFront) __classPrivateFieldSet(this, _Bucket_items, [].concat(_toConsumableArray(__classPrivateFieldGet(this, _Bucket_items, "f")), [todo]), "f");
+      if (toFront) __classPrivateFieldSet(this, _Bucket_items, [todo].concat(_toConsumableArray(__classPrivateFieldGet(this, _Bucket_items, "f"))), "f");
     }
   }, {
     key: "removeItemFromBucket",
-    value: function removeItemFromBucket(id) {
-      this.items = this.items.filter(function (todo) {
-        return todo.id !== id;
-      });
+    value: function removeItemFromBucket(uuid) {
+      __classPrivateFieldSet(this, _Bucket_items, __classPrivateFieldGet(this, _Bucket_items, "f").filter(function (todo) {
+        return todo.uuid !== uuid;
+      }), "f");
     }
   }, {
-    key: "changeBucketTitle",
-    value: function changeBucketTitle(newTitle) {
-      this.title = newTitle;
+    key: "toJSON",
+    value: function toJSON() {
+      return {
+        uuid: __classPrivateFieldGet(this, _Bucket_uuid, "f"),
+        category: __classPrivateFieldGet(this, _Bucket_category, "f"),
+        items: __classPrivateFieldGet(this, _Bucket_items, "f").map(function (todo) {
+          return todo.toJSON();
+        })
+      };
+    }
+  }, {
+    key: "category",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Bucket_category, "f");
+    },
+    set: function set(newCategory) {
+      __classPrivateFieldSet(this, _Bucket_category, newCategory, "f");
+    }
+  }, {
+    key: "uuid",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Bucket_uuid, "f");
+    }
+  }, {
+    key: "items",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Bucket_items, "f");
     }
   }]);
 
   return Bucket;
 }();
 
-exports.default = Bucket;
-},{"../utils/utils":"fkXL"}],"Cy5K":[function(require,module,exports) {
+exports.Bucket = Bucket;
+_Bucket_uuid = new WeakMap(), _Bucket_category = new WeakMap(), _Bucket_items = new WeakMap();
+},{"./generateUUID":"wmpl"}],"Cy5K":[function(require,module,exports) {
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -274,21 +362,15 @@ var __classPrivateFieldGet = this && this.__classPrivateFieldGet || function (re
   return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
 var _Model_state;
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var todo_1 = __importDefault(require("../entities/todo"));
+var Todo_1 = require("../entities/Todo");
 
-var bucket_1 = __importDefault(require("../entities/bucket"));
+var Bucket_1 = require("../entities/Bucket");
 
 var Model = /*#__PURE__*/function () {
   function Model() {
@@ -303,15 +385,16 @@ var Model = /*#__PURE__*/function () {
   _createClass(Model, [{
     key: "addBucket",
     value: function addBucket() {
-      var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "New Bucket";
+      var category = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "New Bucket";
       var items = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var uuid = arguments.length > 2 ? arguments[2] : undefined;
 
       /**
        * Adds a bucket to the model
        * @param title {string} - title of the container
        * @param items {Todo[]} - array of Todo items
        */
-      var newBucket = new bucket_1.default(title, items);
+      var newBucket = new Bucket_1.Bucket(category, items, uuid);
       __classPrivateFieldGet(this, _Model_state, "f").buckets = [].concat(_toConsumableArray(__classPrivateFieldGet(this, _Model_state, "f").buckets), [newBucket]);
       this.setLocalStorageData();
       return newBucket;
@@ -325,20 +408,22 @@ var Model = /*#__PURE__*/function () {
     key: "_findBucket",
     value: function _findBucket(bucketID) {
       return __classPrivateFieldGet(this, _Model_state, "f").buckets.find(function (bucket) {
-        return bucket.id === bucketID;
+        return bucket.uuid === bucketID;
       });
     }
   }, {
     key: "_findTodo",
     value: function _findTodo(bucket, todoID) {
       return bucket.items.find(function (todo) {
-        return todo.id === todoID;
+        return todo.uuid === todoID;
       });
     }
   }, {
     key: "setLocalStorageData",
     value: function setLocalStorageData() {
-      localStorage.setItem("buckets", JSON.stringify(this.buckets));
+      localStorage.setItem("buckets", JSON.stringify(this.buckets.map(function (bucket) {
+        return bucket.toJSON();
+      })));
     }
   }, {
     key: "getLocalStorageData",
@@ -353,9 +438,9 @@ var Model = /*#__PURE__*/function () {
       } else {
         //initialize the Bucket and Todo Objects
         buckets.forEach(function (bucket) {
-          return _this.addBucket(bucket.title, bucket.items.map(function (todo) {
-            return new todo_1.default(bucket.title, todo.title, todo.description);
-          }));
+          return _this.addBucket(bucket.category, bucket.items.map(function (todo) {
+            return new Todo_1.Todo(todo.title, todo.description, todo.uuid);
+          }), bucket.uuid);
         });
       }
     }
@@ -367,8 +452,8 @@ var Model = /*#__PURE__*/function () {
 
       var targetBucket = this._findBucket(bucketID);
 
-      var newTodo = new todo_1.default(targetBucket.title, todoTitle, todoDescription);
-      targetBucket.addItemToBucket(newTodo);
+      var newTodo = new Todo_1.Todo(todoTitle, todoDescription);
+      targetBucket.addItemToBucket(newTodo, true);
       this.setLocalStorageData();
       return newTodo;
     }
@@ -385,7 +470,7 @@ var Model = /*#__PURE__*/function () {
     value: function changeBucketTitle(bucketID, newTitle) {
       var targetBucket = this._findBucket(bucketID);
 
-      targetBucket.changeBucketTitle(newTitle);
+      targetBucket.category = newTitle;
       this.setLocalStorageData();
     }
   }, {
@@ -395,7 +480,7 @@ var Model = /*#__PURE__*/function () {
 
       var targetTodo = this._findTodo(targetBucket, todoID);
 
-      targetTodo.changeTodoTitle(newTitle);
+      targetTodo.title = newTitle;
       this.setLocalStorageData();
     }
   }, {
@@ -405,7 +490,7 @@ var Model = /*#__PURE__*/function () {
 
       var targetTodo = this._findTodo(targetBucket, todoID);
 
-      targetTodo.changeTodoDescription(newDescription);
+      targetTodo.description = newDescription;
       this.setLocalStorageData();
     }
   }, {
@@ -414,13 +499,13 @@ var Model = /*#__PURE__*/function () {
       var originBucket = this._findBucket(bucketID);
 
       var todo = originBucket.items.find(function (todo) {
-        return todo.id === todoID;
+        return todo.uuid === todoID;
       });
 
       var targetBucket = this._findBucket(targetBucketID);
 
-      originBucket.removeItemFromBucket(todo.id);
-      targetBucket.addItemToBucket(todo, true);
+      originBucket.removeItemFromBucket(todo.uuid);
+      targetBucket.addItemToBucket(todo);
       this.setLocalStorageData();
     }
   }]);
@@ -430,7 +515,7 @@ var Model = /*#__PURE__*/function () {
 
 exports.default = Model;
 _Model_state = new WeakMap();
-},{"../entities/todo":"C3zP","../entities/bucket":"auz1"}],"Yav5":[function(require,module,exports) {
+},{"../entities/Todo":"yAM0","../entities/Bucket":"Ez5f"}],"Yav5":[function(require,module,exports) {
 module.exports = "sprites.31745931.svg";
 },{}],"EaOZ":[function(require,module,exports) {
 "use strict";
@@ -478,10 +563,10 @@ var TodoView = /*#__PURE__*/function () {
        * generates the markup to render the todo
        * @param todoObj {Todo} - todo - Object created with Todo class
        */
-      var id = todoObj.id,
+      var uuid = todoObj.uuid,
           title = todoObj.title,
           description = todoObj.description;
-      return "\n    <article class=\"card-item\" data-id=".concat(id, " draggable=\"true\">\n        <div class=\"card-item__header\">\n            <h3 class=\"card-item__title\" contenteditable=\"true\">").concat(title, "</h3>\n            <div class=\"card-item__buttons\">\n                <button type=\"submit\" data-tag=\"delete\" class=\"btn-delete\">\n                    <svg>\n                        <use xlink:href=\"").concat(sprites_svg_1.default, "#icon-bin\"></use>\n                    </svg>\n                </button>\n            </div>\n        </div>\n        <p class=\"card-item__description\" contenteditable=\"true\">").concat(description, "</p>\n    </article>");
+      return "\n    <article class=\"card-item\" data-uuid=".concat(uuid, " draggable=\"true\">\n        <div class=\"card-item__header\">\n            <h3 class=\"card-item__title\" contenteditable=\"true\">").concat(title, "</h3>\n            <div class=\"card-item__buttons\">\n                <button type=\"submit\" data-tag=\"delete\" class=\"btn-delete\">\n                    <svg>\n                        <use xlink:href=\"").concat(sprites_svg_1.default, "#icon-bin\"></use>\n                    </svg>\n                </button>\n            </div>\n        </div>\n        <p class=\"card-item__description\" contenteditable=\"true\">").concat(description, "</p>\n    </article>");
     }
   }]);
 
@@ -563,10 +648,10 @@ var BucketView = /*#__PURE__*/function () {
        * generates the markup to render the bucket
        * @param bucketObj {Bucket} - bucketObj
        */
-      var id = bucketObj.id,
-          title = bucketObj.title,
+      var uuid = bucketObj.uuid,
+          category = bucketObj.category,
           items = bucketObj.items;
-      return "\n    <section class=\"task-container\" data-id=".concat(id, " >\n      <header class=\"task-container__header\">\n          <div class=\"container-info\">\n              <h2 class=\"task-headline\" contenteditable=\"true\">").concat(title, "</h2>\n              <div class=\"task-count\">").concat(items.length, "</div>\n          </div>\n          <button class=\"btn-add\">+</button>\n      </header>\n      <div class=\"task-container__cards\">\n      ").concat(items.length > 0 ? items.map(function (todo) {
+      return "\n    <section class=\"task-container\" data-uuid=".concat(uuid, " >\n      <header class=\"task-container__header\">\n          <div class=\"container-info\">\n              <h2 class=\"task-headline\" contenteditable=\"true\">").concat(category, "</h2>\n              <div class=\"task-count\">").concat(items.length, "</div>\n          </div>\n          <button class=\"btn-add\">+</button>\n      </header>\n      <div class=\"task-container__cards\">\n      ").concat(items.length > 0 ? items.map(function (todo) {
         return __classPrivateFieldGet(_this, _BucketView_todoView, "f").render(todo);
       }).join("") : "<p>Everything done here!</p>", "\n      </div>       \n    </section>");
     }
@@ -612,7 +697,7 @@ var BucketView = /*#__PURE__*/function () {
         var target = e.target;
         if (target.classList[0] !== "btn-add") return;
         var bucket = target.closest(".task-container");
-        var bucketID = bucket.dataset.id;
+        var bucketID = bucket.dataset.uuid;
         handler(bucketID);
       });
     }
@@ -629,9 +714,9 @@ var BucketView = /*#__PURE__*/function () {
         var closestBtn = target.closest(".btn-delete");
         if (!closestBtn) return;
         var bucket = target.closest(".task-container");
-        var bucketID = bucket.dataset.id;
+        var bucketID = bucket.dataset.uuid;
         var todo = target.closest(".card-item");
-        var todoID = todo.dataset.id;
+        var todoID = todo.dataset.uuid;
         handler(bucketID, todoID);
       });
     }
@@ -647,7 +732,7 @@ var BucketView = /*#__PURE__*/function () {
         if (target.classList[0] !== "task-headline") return;
         var newTitle = target.innerText;
         var bucket = target.closest(".task-container");
-        var bucketID = bucket.dataset.id;
+        var bucketID = bucket.dataset.uuid;
         handler(bucketID, newTitle);
       });
     }
@@ -662,9 +747,9 @@ var BucketView = /*#__PURE__*/function () {
       var target = e.target;
       var newText = target.innerText;
       var bucket = target.closest(".task-container");
-      var bucketID = bucket.dataset.id;
+      var bucketID = bucket.dataset.uuid;
       var todo = target.closest(".card-item");
-      var todoID = todo.dataset.id;
+      var todoID = todo.dataset.uuid;
       handler(bucketID, todoID, newText);
     }
   }, {
@@ -715,9 +800,9 @@ var BucketView = /*#__PURE__*/function () {
        */
       __classPrivateFieldGet(this, _BucketView_parent, "f").addEventListener("dragstart", function (e) {
         var todo = e.target;
-        var todoID = todo.dataset.id;
+        var todoID = todo.dataset.uuid;
         var bucket = todo.closest(".task-container");
-        var bucketID = bucket.dataset.id;
+        var bucketID = bucket.dataset.uuid;
         todo.style.opacity = "0.3";
         e.dataTransfer.effectAllowed = "move";
         e.dataTransfer.setData("text/plain", "".concat(bucketID, ", ").concat(todoID));
@@ -790,7 +875,7 @@ var BucketView = /*#__PURE__*/function () {
         e.preventDefault();
         var target = e.target;
         var targetBucket = target.closest(".task-container");
-        var targetBucketID = targetBucket.dataset.id;
+        var targetBucketID = targetBucket.dataset.uuid;
 
         var _e$dataTransfer$getDa = e.dataTransfer.getData("text/plain").split(",").map(function (item) {
           return item.replace(" ", "");
@@ -889,10 +974,9 @@ var Controller = /*#__PURE__*/function () {
   }, {
     key: "addNewBucket",
     value: function addNewBucket() {
-      var newBucket = __classPrivateFieldGet(this, _Controller_model, "f").addBucket();
+      __classPrivateFieldGet(this, _Controller_model, "f").addBucket();
 
-      this._renderBuckets(); // this.#view.render(newBucket);
-
+      this._renderBuckets();
     }
   }, {
     key: "addNewTodoToBucket",
@@ -957,4 +1041,4 @@ var controller_1 = __importDefault(require("./ts/components/controller"));
 var controller = new controller_1.default();
 controller.init();
 },{"./ts/components/controller":"jVKl"}]},{},["YSF2"], null)
-//# sourceMappingURL=app.39229e33.js.map
+//# sourceMappingURL=app.08f7daab.js.map
