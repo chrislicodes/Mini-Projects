@@ -1,8 +1,9 @@
-import Todo from "../entities/todo";
-import Bucket from "../entities/bucket";
-interface AppState {
+import { Todo } from "../entities/Todo";
+import { Bucket } from "../entities/Bucket";
+
+type AppState = {
   buckets: Bucket[];
-}
+};
 
 export default class Model {
   #state: AppState = {
@@ -11,15 +12,16 @@ export default class Model {
 
   addBucket(
     this: Model,
-    title: string = "New Bucket",
-    items: Todo[] = []
+    category: string = "New Bucket",
+    items: Todo[] = [],
+    uuid?: string
   ): Bucket {
     /**
      * Adds a bucket to the model
      * @param title {string} - title of the container
      * @param items {Todo[]} - array of Todo items
      */
-    const newBucket = new Bucket(title, items);
+    const newBucket = new Bucket(category, items, uuid);
     this.#state.buckets = [...this.#state.buckets, newBucket];
 
     this.setLocalStorageData();
@@ -31,15 +33,18 @@ export default class Model {
   }
 
   private _findBucket(this: Model, bucketID: string): Bucket {
-    return this.#state.buckets.find((bucket) => bucket.id === bucketID);
+    return this.#state.buckets.find((bucket) => bucket.uuid === bucketID);
   }
 
   private _findTodo(this: Model, bucket: Bucket, todoID: string) {
-    return bucket.items.find((todo) => todo.id === todoID);
+    return bucket.items.find((todo) => todo.uuid === todoID);
   }
 
   setLocalStorageData(): void {
-    localStorage.setItem("buckets", JSON.stringify(this.buckets));
+    localStorage.setItem(
+      "buckets",
+      JSON.stringify(this.buckets.map((bucket) => bucket.toJSON()))
+    );
   }
 
   getLocalStorageData(this: Model): void {
@@ -52,10 +57,11 @@ export default class Model {
       //initialize the Bucket and Todo Objects
       buckets.forEach((bucket: Bucket) =>
         this.addBucket(
-          bucket.title,
+          bucket.category,
           bucket.items.map(
-            (todo) => new Todo(bucket.title, todo.title, todo.description)
-          )
+            (todo) => new Todo(todo.title, todo.description, todo.uuid)
+          ),
+          bucket.uuid
         )
       );
     }
@@ -68,9 +74,9 @@ export default class Model {
     todoDescription: string = "Todo Description"
   ): Todo {
     const targetBucket = this._findBucket(bucketID);
-    const newTodo = new Todo(targetBucket.title, todoTitle, todoDescription);
+    const newTodo = new Todo(todoTitle, todoDescription);
 
-    targetBucket.addItemToBucket(newTodo);
+    targetBucket.addItemToBucket(newTodo, true);
 
     this.setLocalStorageData();
     return newTodo;
@@ -85,7 +91,7 @@ export default class Model {
 
   changeBucketTitle(this: Model, bucketID: string, newTitle: string): void {
     const targetBucket = this._findBucket(bucketID);
-    targetBucket.changeBucketTitle(newTitle);
+    targetBucket.category = newTitle;
     this.setLocalStorageData();
   }
 
@@ -97,7 +103,8 @@ export default class Model {
   ): void {
     const targetBucket = this._findBucket(bucketID);
     const targetTodo = this._findTodo(targetBucket, todoID);
-    targetTodo.changeTodoTitle(newTitle);
+    targetTodo.title = newTitle;
+
     this.setLocalStorageData();
   }
 
@@ -109,7 +116,8 @@ export default class Model {
   ): void {
     const targetBucket = this._findBucket(bucketID);
     const targetTodo = this._findTodo(targetBucket, todoID);
-    targetTodo.changeTodoDescription(newDescription);
+    targetTodo.description = newDescription;
+
     this.setLocalStorageData();
   }
 
@@ -120,11 +128,11 @@ export default class Model {
     targetBucketID: string
   ) {
     const originBucket = this._findBucket(bucketID);
-    const todo = originBucket.items.find((todo) => todo.id === todoID);
+    const todo = originBucket.items.find((todo) => todo.uuid === todoID);
     const targetBucket = this._findBucket(targetBucketID);
 
-    originBucket.removeItemFromBucket(todo.id);
-    targetBucket.addItemToBucket(todo, true);
+    originBucket.removeItemFromBucket(todo.uuid);
+    targetBucket.addItemToBucket(todo);
 
     this.setLocalStorageData();
   }

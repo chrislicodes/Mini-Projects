@@ -1,6 +1,6 @@
 import Model from "../model";
-import Bucket from "../../entities/bucket";
-import Todo from "../../entities/todo";
+import { Bucket } from "../../entities/bucket";
+import { Todo } from "../../entities/todo";
 
 class LocalStorageMock {
   store = {};
@@ -37,13 +37,13 @@ describe("Model", () => {
 
     expect(model.buckets.length).toBeGreaterThan(0);
     expect(model.buckets[0]).toBeInstanceOf(Bucket);
-    expect(model.buckets[0].title).toBe("Test");
+    expect(model.buckets[0].category).toBe("Test");
 
     model.addBucket("Test2");
 
     expect(model.buckets.length).toBeGreaterThan(1);
     expect(model.buckets[1]).toBeInstanceOf(Bucket);
-    expect(model.buckets[1].title).toBe("Test2");
+    expect(model.buckets[1].category).toBe("Test2");
   });
 
   it("should add a todo to a bucket", () => {
@@ -53,14 +53,14 @@ describe("Model", () => {
 
     expect(model.buckets.length).toBeGreaterThan(1);
 
-    const bucketID = model.buckets[0].id;
+    const bucketID = model.buckets[0].uuid;
     model.addTodoToBucket(bucketID, "Test Title", "Test Description");
 
     expect(model.buckets[0].items.length).toBeGreaterThan(0);
     expect(model.buckets[0].items[0]).toBeInstanceOf(Todo);
     expect(model.buckets[0].items[0].category).toBe(model.buckets[0].title);
 
-    const bucketID2 = model.buckets[1].id;
+    const bucketID2 = model.buckets[1].uuid;
 
     model.addTodoToBucket(bucketID2, "Test Title", "Test Description");
     expect(model.buckets[1].items.length).toBeGreaterThan(0);
@@ -73,31 +73,31 @@ describe("Model", () => {
     model.addBucket("Test");
     model.addBucket("Test2");
 
-    const bucketID = model.buckets[1].id;
+    const bucketID = model.buckets[1].uuid;
     const firstTodoID = model.addTodoToBucket(
       bucketID,
       "Test Title",
       "Test Description"
-    ).id;
+    ).uuid;
 
     const secondTodoID = model.addTodoToBucket(
       bucketID,
       "Test Title 2",
       "Test Description 2"
-    ).id;
+    ).uuid;
 
     model.removeTodoFromBucket(bucketID, firstTodoID);
 
-    expect(model.buckets[1].items[0].id).toBe(secondTodoID);
+    expect(model.buckets[1].items[0].uuid).toBe(secondTodoID);
   });
 
   it("should rename a specific bucket", () => {
     const model = new Model();
-    const bucketID = model.addBucket("Test").id;
+    const bucketID = model.addBucket("Test").uuid;
 
     model.changeBucketTitle(bucketID, "Changed Title");
 
-    expect(model.buckets[0].title).toBe("Changed Title");
+    expect(model.buckets[0].category).toBe("Changed Title");
   });
 
   it("should should change the todo title in a specific bucket", () => {
@@ -105,8 +105,8 @@ describe("Model", () => {
     model.addBucket();
     model.addBucket();
 
-    const bucketID = model.addBucket().id;
-    const todoID = model.addTodoToBucket(bucketID).id;
+    const bucketID = model.addBucket().uuid;
+    const todoID = model.addTodoToBucket(bucketID).uuid;
 
     model.changeTodoTitle(bucketID, todoID, "changed title");
 
@@ -118,8 +118,8 @@ describe("Model", () => {
     model.addBucket();
     model.addBucket();
 
-    const bucketID = model.addBucket().id;
-    const todoID = model.addTodoToBucket(bucketID, "test", "test").id;
+    const bucketID = model.addBucket().uuid;
+    const todoID = model.addTodoToBucket(bucketID, "test", "test").uuid;
 
     model.changeTodoDescription(bucketID, todoID, "changed description");
 
@@ -130,7 +130,7 @@ describe("Model", () => {
     const model = new Model();
     const bucket = model.addBucket();
     const todo = model.addTodoToBucket(
-      bucket.id,
+      bucket.uuid,
       "Test Title",
       "Test Description"
     );
@@ -139,9 +139,9 @@ describe("Model", () => {
 
     const data = JSON.parse(localStorage.getItem("buckets"));
 
-    expect(data[0].id).toBe(bucket.id);
+    expect(data[0].uuid).toBe(bucket.uuid);
     expect(data[0].title).toBe(bucket.title);
-    expect(data[0].items[0].id).toBe(todo.id);
+    expect(data[0].items[0].uuid).toBe(todo.uuid);
     expect(data[0].items[0].title).toBe(todo.title);
     expect(data[0].items[0].description).toBe(todo.description);
   });
@@ -150,7 +150,7 @@ describe("Model", () => {
     const model1 = new Model();
     const bucket = model1.addBucket();
 
-    model1.addTodoToBucket(bucket.id, "Test Title", "Test Description");
+    model1.addTodoToBucket(bucket.uuid, "Test Title", "Test Description");
 
     model1.setLocalStorageData();
     const model2 = new Model();
@@ -174,12 +174,12 @@ describe("Model", () => {
     const bucket2 = model.addBucket();
 
     const todoID = model.addTodoToBucket(
-      bucket1.id,
+      bucket1.uuid,
       "Bucket 1 title",
       "Bucket 1 Description"
-    ).id;
+    ).uuid;
 
-    model.moveTodoToAnotherBucket(bucket1.id, todoID, bucket2.id);
+    model.moveTodoToAnotherBucket(bucket1.uuid, todoID, bucket2.uuid);
 
     expect(model.buckets[1].items[0]).toBeInstanceOf(Todo);
   });

@@ -1,4 +1,5 @@
-import Bucket from "../../entities/bucket";
+import { Bucket } from "../../entities/Bucket";
+import { Todo } from "../../entities/Todo";
 import TodoView from "./todoView";
 import icons from "../../../img/sprites.svg";
 
@@ -23,13 +24,13 @@ export default class BucketView {
      * generates the markup to render the bucket
      * @param bucketObj {Bucket} - bucketObj
      */
-    const { id, title, items } = bucketObj;
+    const { uuid, category, items } = bucketObj;
 
     return `
-    <section class="task-container" data-id=${id} >
+    <section class="task-container" data-uuid=${uuid} >
       <header class="task-container__header">
           <div class="container-info">
-              <h2 class="task-headline" contenteditable="true">${title}</h2>
+              <h2 class="task-headline" contenteditable="true">${category}</h2>
               <div class="task-count">${items.length}</div>
           </div>
           <button class="btn-add">+</button>
@@ -37,7 +38,7 @@ export default class BucketView {
       <div class="task-container__cards">
       ${
         items.length > 0
-          ? items.map((todo) => this.#todoView.render(todo)).join("")
+          ? items.map((todo: Todo) => this.#todoView.render(todo)).join("")
           : "<p>Everything done here!</p>"
       }
       </div>       
@@ -87,7 +88,7 @@ export default class BucketView {
       const target = e.target as HTMLElement;
       if (target.classList[0] !== "btn-add") return;
       const bucket = target.closest(".task-container") as HTMLElement;
-      const bucketID = bucket.dataset.id;
+      const bucketID = bucket.dataset.uuid;
       handler(bucketID);
     });
   }
@@ -104,10 +105,10 @@ export default class BucketView {
       if (!closestBtn) return;
 
       const bucket = target.closest(".task-container") as HTMLElement;
-      const bucketID = bucket.dataset.id;
+      const bucketID = bucket.dataset.uuid;
 
       const todo = target.closest(".card-item") as HTMLElement;
-      const todoID = todo.dataset.id;
+      const todoID = todo.dataset.uuid;
 
       handler(bucketID, todoID);
     });
@@ -125,7 +126,7 @@ export default class BucketView {
       const newTitle = target.innerText;
 
       const bucket = target.closest(".task-container") as HTMLElement;
-      const bucketID = bucket.dataset.id;
+      const bucketID = bucket.dataset.uuid;
       handler(bucketID, newTitle);
     });
   }
@@ -141,10 +142,10 @@ export default class BucketView {
     const newText = target.innerText;
 
     const bucket = target.closest(".task-container") as HTMLElement;
-    const bucketID = bucket.dataset.id;
+    const bucketID = bucket.dataset.uuid;
 
     const todo = target.closest(".card-item") as HTMLElement;
-    const todoID = todo.dataset.id;
+    const todoID = todo.dataset.uuid;
 
     handler(bucketID, todoID, newText);
   }
@@ -186,10 +187,10 @@ export default class BucketView {
       "dragstart",
       (e: DragEvent) => {
         const todo = e.target as HTMLElement;
-        const todoID = todo.dataset.id;
+        const todoID = todo.dataset.uuid;
 
         const bucket = todo.closest(".task-container") as HTMLElement;
-        const bucketID = bucket.dataset.id;
+        const bucketID = bucket.dataset.uuid;
 
         todo.style.opacity = "0.3";
         e.dataTransfer.effectAllowed = "move";
@@ -257,7 +258,7 @@ export default class BucketView {
       e.preventDefault();
       const target = e.target as HTMLElement;
       const targetBucket = target.closest(".task-container") as HTMLElement;
-      const targetBucketID = targetBucket.dataset.id;
+      const targetBucketID = targetBucket.dataset.uuid;
       const [bucketID, todoID] = e.dataTransfer
         .getData("text/plain")
         .split(",")

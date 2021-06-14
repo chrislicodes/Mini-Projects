@@ -1,4 +1,4 @@
-import Todo from "../../entities/todo";
+import { Todo } from "../../entities/Todo";
 import icons from "../../../img/sprites.svg";
 
 export default class TodoView {
@@ -19,10 +19,10 @@ export default class TodoView {
      * generates the markup to render the todo
      * @param todoObj {Todo} - todo - Object created with Todo class
      */
-    const { id, title, description } = todoObj;
+    const { uuid, title, description } = todoObj;
 
     return `
-    <article class="card-item" data-id=${id} draggable="true">
+    <article class="card-item" data-uuid=${uuid} draggable="true">
         <div class="card-item__header">
             <h3 class="card-item__title" contenteditable="true">${title}</h3>
             <div class="card-item__buttons">
