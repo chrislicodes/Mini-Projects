@@ -1,25 +1,51 @@
-import Todo from "./todo";
-import { generateID } from "../utils/utils";
+import { Todo } from "./Todo";
+import { generateUUID } from "./generateUUID";
 
-export default class Bucket {
-  readonly id: string = generateID();
-  items: Todo[] = [];
+export class Bucket {
+  #uuid: string;
+  #category: string;
+  #items: Todo[];
 
-  constructor(public title: string, items: Todo[] = []) {
-    this.title = title;
-    this.items = items;
+  constructor(
+    category: string,
+    items: Todo[] = [],
+    uuid: string = generateUUID()
+  ) {
+    this.#category = category;
+    this.#items = items;
+    this.#uuid = uuid;
   }
 
-  addItemToBucket(this: Bucket, todo: Todo, toEnd = false) {
-    if (toEnd) this.items = [...this.items, todo];
-    if (!toEnd) this.items = [todo, ...this.items];
+  addItemToBucket(this: Bucket, todo: Todo, toFront = false) {
+    if (!toFront) this.#items = [...this.#items, todo];
+    if (toFront) this.#items = [todo, ...this.#items];
   }
 
-  removeItemFromBucket(id: string) {
-    this.items = this.items.filter((todo) => todo.id !== id);
+  removeItemFromBucket(uuid: string) {
+    this.#items = this.#items.filter((todo) => todo.uuid !== uuid);
   }
 
-  changeBucketTitle(newTitle: string) {
-    this.title = newTitle;
+  toJSON() {
+    return {
+      uuid: this.#uuid,
+      category: this.#category,
+      items: this.#items.map((todo) => todo.toJSON()),
+    };
+  }
+
+  set category(newCategory: string) {
+    this.#category = newCategory;
+  }
+
+  get uuid() {
+    return this.#uuid;
+  }
+
+  get items() {
+    return this.#items;
+  }
+
+  get category() {
+    return this.#category;
   }
 }

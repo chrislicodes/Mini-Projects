@@ -1,30 +1,50 @@
-import { generateID } from "../utils/utils";
+import { generateUUID } from "./generateUUID";
 
-export default class Todo {
+export class Todo {
   /**
    * Represents a single Todo
    * @param title {string} - title of the todo
    * @param description {string} - description of the todo
-   * @param category {string} - category of the todo
    */
-  readonly id: string = generateID();
-  readonly dateOfCreation: Date = new Date();
+  #uuid: string;
+  #title: string;
+  #description: string;
 
   constructor(
-    public category: string,
-    public title: string,
-    public description: string
+    title: string,
+    description: string,
+    uuid: string = generateUUID()
   ) {
-    this.title = title;
-    this.description = description;
-    this.category = category;
+    this.#title = title;
+    this.#description = description;
+    this.#uuid = uuid;
   }
 
-  changeTodoTitle(this: Todo, newTitle: string): void {
-    this.title = newTitle;
+  toJSON() {
+    return {
+      uuid: this.#uuid,
+      title: this.#title,
+      description: this.#description,
+    };
   }
 
-  changeTodoDescription(this: Todo, newDescription: string): void {
-    this.description = newDescription;
+  get title() {
+    return this.#title;
+  }
+
+  get uuid() {
+    return this.#uuid;
+  }
+
+  get description() {
+    return this.#description;
+  }
+
+  set description(newDescription: string) {
+    this.#description = newDescription;
+  }
+
+  set title(newTitle: string) {
+    this.#title = newTitle;
   }
 }
